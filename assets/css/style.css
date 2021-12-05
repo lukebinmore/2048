@@ -13,7 +13,6 @@ body {
 
 h1,
 h2 {
-  font-size: 280%;
   padding: 0;
   margin: 0;
 }
@@ -72,6 +71,11 @@ header h1 {
   margin: 0 auto;
 }
 
+/* Game container - score area */
+.score-area h2 {
+  font-size: 3vh;
+}
+
 /* Game container - game area */
 .game-area {
   width: 500px;
@@ -79,6 +83,22 @@ header h1 {
   margin: 0 auto;
   border: 0.25em solid #000;
   border-radius: 1em;
+}
+
+/* Game container - controls area */
+.controls-area {
+  font-size: 4vh;
+}
+
+.control-top {
+  padding: 0;
+  margin: 0;
+}
+
+.control-bottom {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
 }
 
 /* Tips section */
