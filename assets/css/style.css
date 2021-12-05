@@ -64,19 +64,12 @@ header h1 {
   border-color: #fff;
 }
 
-/* Game container */
-.game-container {
-  width: 700px;
-  height: 700px;
-  margin: 0 auto;
-}
-
-/* Game container - score area */
+/* Game score area */
 .score-area h2 {
   font-size: 3vh;
 }
 
-/* Game container - game area */
+/* Game game area */
 .game-area {
   width: 500px;
   height: 500px;
@@ -85,7 +78,7 @@ header h1 {
   border-radius: 1em;
 }
 
-/* Game container - controls area */
+/* Game controls area */
 .controls-area {
   font-size: 4vh;
 }
