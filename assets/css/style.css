@@ -2,9 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Pacifico&display=swap');
 
 /* Initial Resets */
-body,
-p,
-span {
+body {
   padding: 0;
   margin: 0;
   font-family: Pacifico, 'sans-serif';
@@ -24,7 +22,6 @@ h2 {
 header {
   width: 100%;
   height: 10vh;
-  
 }
 
 header img {
@@ -64,4 +61,21 @@ header h1 {
 
 .popup-container h2:active {
   border-color: #fff;
+}
+
+/* Tips section */
+#tips-section {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  height: fit-content;
+  background-color: #000;
+  color: #fff;
+}
+
+#tips-section p {
+  margin: 0;
+  padding-left: 1vw;
+  font-size: 2vh;
 }
