@@ -40,13 +40,13 @@ header h1 {
 }
 
 /* Popup section */
-.popup-container {
+#popup-section {
   width: fit-content;
   margin: 2vh auto;
   columns: 2;
 }
 
-.popup-container h2 {
+#popup-section h2 {
   font-weight: 100;
   font-size: 3vh;
   border: 0.25em solid #000;
@@ -55,59 +55,56 @@ header h1 {
   box-sizing: border-box;
 }
 
-.popup-container h2:hover {
+#popup-section h2:hover {
   color: #fff;
   background-color: #000;
   border-radius: 0.75em;
 }
 
-.popup-container h2:active {
+#popup-section h2:active {
   border-color: #fff;
 }
 
-/* Game score area */
-.score-area h2 {
+/* Game score section */
+#score-section h2 {
   font-size: 3vh;
 }
 
 /* Game game area */
-.game-area {
+#game-section {
   width: 500px;
   height: 500px;
   margin: 0 auto;
-  border: 0.25em solid #000;
+  border: 0.5em solid #000;
   border-radius: 1em;
 }
 
-/* Footer */
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
 /* Game controls area */
-.controls-area {
+#controls-section {
   font-size: 4.5vh;
   line-height: 6vh;
+  position: fixed;
+  bottom: 4vh;
+  width: 100%;
 }
 
 .control-bottom {
   display: inline-block;
 }
 
-/* Tips section */
-#tips-section {
+/* Footer - tips */
+footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 4vh;
+  line-height: 4vh;
   text-align: left;
-  height: fit-content;
   background-color: #000;
   color: #fff;
 }
 
-#tips-section p {
+footer p {
   padding-left: 1vw;
   font-size: 2vh;
 }
