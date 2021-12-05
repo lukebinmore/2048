@@ -65,6 +65,22 @@ header h1 {
   border-color: #fff;
 }
 
+/* Game container */
+.game-container {
+  width: 700px;
+  height: 700px;
+  margin: 0 auto;
+}
+
+/* Game container - game area */
+.game-area {
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  border: 0.25em solid #000;
+  border-radius: 1em;
+}
+
 /* Tips section */
 #tips-section {
   position: fixed;
