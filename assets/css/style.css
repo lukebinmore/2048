@@ -40,37 +40,39 @@ header h1 {
   font-size: 5vh;
 }
 
-/* Username prompt section */
-#username-section h1 {
+/* Intro prompt section */
+#intro-section h1 {
   font-weight: 100;
   font-size: 5vh;
   border-bottom: 0.25em solid #000;
   padding: 0.25em;
 }
 
-#username-old {
-  font-size: 4vh;
-  margin: 1vh;
-}
-
-#username-section label {
+.input-label {
   display: block;
   font-size: 3vh;
   margin: 1vh;
 }
 
-#username-new {
+#input-username {
   display: block;
   font-size: 3vh;
+  font-family: inherit;
+  font-weight: inherit;
   margin: 1vh auto;
-  padding: 5px;
-  width: 50%;
+  padding: 10px;
+  width: 40%;
   text-align: center;
   border: 0.25em solid #000;
   border-radius: 0.5em;
 }
 
-#username-play {
+#input-cookies {
+  transform: scale(200%);
+  cursor: pointer;
+}
+
+#intro-play {
   width: fit-content;
   font-size: 4vh;
   border: 0.25em solid #000;
@@ -78,15 +80,34 @@ header h1 {
   padding: 0.25em;
   box-sizing: border-box;
   margin: 1vh auto;
+  cursor: pointer;
 }
 
-#username-play:hover {
+#intro-play:hover {
   color: #fff;
   background-color: #000;
   border-radius: 0.75em;
 }
 
-#username-play:active {
+#intro-play:active {
+  border-color: #fff;
+}
+
+#intro-reset {
+  font-size: 2vh;
+  border: 0.25em solid #000;
+  border-radius: 0.5em;
+  width: fit-content;
+  padding: 5px;
+  margin: 1vh auto;
+}
+
+#intro-reset:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+#intro-reset:active {
   border-color: #fff;
 }
 
