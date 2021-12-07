@@ -23,6 +23,9 @@ function setSpace() {
   game.style.height = compareSpace() + "px";
 }
 
-window.addEventListener("resize", function () {
+function startWindowScript() {
   setSpace();
-});
+  window.addEventListener("resize", function () {
+    setSpace();
+  });
+}
