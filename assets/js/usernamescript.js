@@ -65,20 +65,23 @@ function resetFields() {
   setCookie("cookies", "");
 }
 
-function clickPlay() {
-  if (validateInput()) {
+function clickPlay(e) {
+  if (validateInput() && e.key === "Enter") {
+    document.removeEventListener("keypress", clickPlay);
     changePage();
     startWindowScript();
     startTipsScript();
   }
 }
 
-updateUsernameField();
+function startUsernameScript() {
+  updateUsernameField();
 
-document.getElementById("intro-play").addEventListener("click", function () {
-  clickPlay();
-})
+  document.getElementById("intro-play").addEventListener("click", clickPlay);
+  
+  document.getElementById("intro-reset").addEventListener("click", resetFields);
 
-document.getElementById("intro-reset").addEventListener("click", function() {
-  resetFields();
-})
+  document.addEventListener("keypress", clickPlay);
+}
+
+startUsernameScript();
