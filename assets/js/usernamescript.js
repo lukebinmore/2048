@@ -1,9 +1,14 @@
-function setHeight(e) {
-  let topRec = document.getElementsByTagName("header")[0].getBoundingClientRect();
-  let bottomRec = document.getElementsByTagName("footer")[0].getBoundingClientRect();
+function changePage() {
+  let pageElements = document.getElementsByClassName("main-page");
+  let usernameSection = document.getElementById("username-section");
 
-  e.style.minHeight = (bottomRec.top - topRec.bottom) + "px";
+  usernameSection.hidden = true;
+
+  for (let element of pageElements) {
+    element.hidden = false;
+  }
 }
 
-
-setHeight(document.getElementById("username-section"));
+function clickPlay() {
+  changePage();
+}
