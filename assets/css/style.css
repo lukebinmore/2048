@@ -48,10 +48,14 @@ header h1 {
   padding: 0.25em;
 }
 
-.input-label {
+.intro-label {
   display: block;
   font-size: 3vh;
   margin: 1vh;
+}
+
+#intro-error {
+  color: #c00;
 }
 
 #input-username {

@@ -29,10 +29,12 @@ function validateInput() {
   let cookiesInput = document.getElementById("input-cookies");
 
   if (usernameInput.value === "") {
+    failedValidation("username empty");
     return false;
   }
 
   if (!cookiesInput.checked) {
+    failedValidation("cookies not accepted");
     return false;
   }
 
@@ -40,6 +42,18 @@ function validateInput() {
   setCookie("cookies", "agreed");
 
   return true;
+}
+
+function failedValidation(input) {
+  let errElement = document.getElementById("intro-error");
+  switch (input) {
+    case "username empty":
+      errElement.innerText = "Please enter a username!";
+      break;
+    case "cookies not accepted":
+      errElement.innerText = "Please confirm usage of cookies!";
+      break;
+  }
 }
 
 function resetFields() {
