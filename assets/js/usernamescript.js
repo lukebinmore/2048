@@ -66,11 +66,18 @@ function resetFields() {
 }
 
 function clickPlay(e) {
-  if (validateInput() && e.key === "Enter") {
-    document.removeEventListener("keypress", clickPlay);
+  if (e.type === "keypress") {
+    if (e.key !== "Enter") {
+      return;
+    }
+  }
+
+  if (validateInput()) {
     changePage();
     startWindowScript();
     startTipsScript();
+    
+    document.removeEventListener("keypress", clickPlay);
   }
 }
 
