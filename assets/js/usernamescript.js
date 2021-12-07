@@ -14,3 +14,5 @@ function clickPlay() {
   startWindowScript();
   startTipsScript();
 }
+
+console.log(getCookie("username"));

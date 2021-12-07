@@ -3,9 +3,9 @@ function getCookie(name){
 
   for (let cookie of cookies) {
     let cookiePair = cookie.split("=");
-
-    if (cookiePair[0] === name) {
-      return cookiePair[0];
+    
+    if (cookiePair[0].trim() === name) {
+      return cookiePair[1];
     }
   }
 
