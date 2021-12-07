@@ -16,6 +16,7 @@ h2,
 p {
   padding: 0;
   margin: 0;
+  font-weight: 100;
 }
 
 /* Header section */
@@ -47,6 +48,55 @@ header h1 {
   background-color: #fff;
 }
 
+#username-section h1 {
+  font-weight: 100;
+  font-size: 5vh;
+  border-bottom: 0.25em solid #000;
+  padding: 0.25em;
+}
+
+#username-old {
+  font-size: 4vh;
+  margin: 1vh;
+}
+
+#username-section label {
+  display: block;
+  font-size: 3vh;
+  margin: 1vh;
+}
+
+#username-new {
+  display: block;
+  font-size: 3vh;
+  margin: 1vh auto;
+  padding: 5px;
+  width: 50%;
+  text-align: center;
+  border: 0.25em solid #000;
+  border-radius: 0.5em;
+}
+
+#username-play {
+  width: fit-content;
+  font-size: 4vh;
+  border: 0.25em solid #000;
+  border-radius: 0.75em;
+  padding: 0.25em;
+  box-sizing: border-box;
+  margin: 1vh auto;
+}
+
+#username-play:hover {
+  color: #fff;
+  background-color: #000;
+  border-radius: 0.75em;
+}
+
+#username-play:active {
+  border-color: #fff;
+}
+
 /* Popup section */
 #popup-section {
   width: fit-content;
@@ -55,7 +105,6 @@ header h1 {
 }
 
 #popup-section h2 {
-  font-weight: 100;
   font-size: 3vh;
   border: 0.25em solid #000;
   border-radius: 0.75em;
