@@ -11,4 +11,6 @@ function changePage() {
 
 function clickPlay() {
   changePage();
+  startWindowScript();
+  startTipsScript();
 }
