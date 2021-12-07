@@ -39,6 +39,14 @@ header h1 {
   font-size: 5vh;
 }
 
+/* Username prompt section */
+#username-section {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  background-color: #fff;
+}
+
 /* Popup section */
 #popup-section {
   width: fit-content;
