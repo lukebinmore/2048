@@ -59,6 +59,7 @@ function failedValidation(input) {
 function resetFields() {
   document.getElementById("input-username").value = "";
   document.getElementById("input-cookies").checked = false;
+  document.getElementById("intro-error").innerText = "";
 
   setCookie("username", "");
   setCookie("cookies", "");
