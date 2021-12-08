@@ -30,11 +30,13 @@ function validateInput() {
 
   if (usernameInput.value === "") {
     failedValidation("username empty");
+    usernameInput.focus();
     return false;
   }
 
   if (!cookiesInput.checked) {
     failedValidation("cookies not accepted");
+    cookiesInput.focus();
     return false;
   }
 
