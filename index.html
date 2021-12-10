@@ -41,9 +41,9 @@
     <p id="intro-reset">Reset</p>
   </section>
 
-  <section id="popup-section" class="main-page" hidden>
-    <h2>Instructions <i class="fas fa-info-circle"></i></h2>
-    <h2><i class="fas fa-history"></i> Score History</h2>
+  <section id="menu-button-section" class="main-page" hidden>
+    <h2 id="instructions-button" data-state="closed">Instructions <i class="fas fa-info-circle"></i></h2>
+    <h2 id="history-button" data-state="closed"><i class="fas fa-history"></i> Score History</h2>
   </section>
 
   <section id="score-section" class="main-page" hidden>
@@ -51,13 +51,16 @@
   </section>
 
   <section id="game-section" class="main-page" hidden>
-    <div id="instructions-area" class="game-section-areas" hidden>
+    <div id="close-page-button" hidden>
+      <i class="fas fa-times-circle"></i>
+    </div>
+    <div id="instructions-page" class="game-section-pages" hidden>
       Instructions Area
     </div>
-    <div id="history-area" class="game-section-areas" hidden>
+    <div id="history-page" class="game-section-pages" hidden>
       Score History Area
     </div>
-    <div id="game-area" class="game-section-areas">
+    <div id="game-page" class="game-section-pages">
       Game Window
     </div>
   </section>
@@ -77,6 +80,7 @@
   <script src="assets/js/cookiemanager.js"></script>
   <script src="assets/js/windowscript.js"></script>
   <script src="assets/js/tips.js"></script>
+  <script src="assets/js/pagemanager.js"></script>
   <script src="assets/js/usernamescript.js"></script>
 </body>
 
