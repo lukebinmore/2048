@@ -83,6 +83,9 @@ function closePage() {
 
 
 
+
+
+
 // Game section resize functions
 
 function getVerticalSpace() {
@@ -123,7 +126,58 @@ function startWindowScript() {
 
 
 
-// Element declerations
+// Tips bar functions
+
+function nextTip() {
+  let tipElement = document.getElementById("tips");
+  let tipIndex = newTipIndex(tipElement);
+
+  tipElement.innerText = tips[tipIndex];
+  updateAnimationSpeed(tipElement, tipIndex);
+  restartAnimation(tipElement);
+}
+
+function newTipIndex(e) {
+  if (e.dataset.tipindex < tips.length - 1) {
+    ++e.dataset.tipindex;
+  } else {
+    e.dataset.tipindex = 0;
+  }
+
+  return e.dataset.tipindex;
+}
+
+function updateAnimationSpeed(e, tipIndex) {
+  let width = e.offsetWidth;
+  let duration = 3 * (width / 100);
+
+  e.style.animationDuration = duration + "s";
+  e.style.animationIterationCount = 1;
+}
+
+function restartAnimation(e) {
+  e.classList.remove("tips-animation");
+  void e.offsetWidth;
+  e.classList.add("tips-animation");
+}
+
+function startTipsScript() {
+  nextTip();
+  document.getElementById("tips").addEventListener("animationend", function(){
+    nextTip();
+  });
+}
+
+
+
+
+
+
+
+
+
+
+// Element declarations
 
 let instructionsButton = document.getElementById("instructions-button");
 let historyButton = document.getElementById("history-button");
@@ -134,3 +188,16 @@ let historyPage = document.getElementById("history-page");
 let gamePage = document.getElementById("game-page");
 
 document.addEventListener("click", clickInput);
+
+
+
+
+// Tips array declaration
+
+let tips = [
+  "aoipasdfkdoskfposdkfposkdfpoksdpfokspdofkpsodkfposkdfposkdfp",
+  "bpoakspdokapsokdpaoskdpoaksdpokaspodkapsokdaposkdpoaksdpoaksdpokaspdokapsodkaposkdpoaksd",
+  "cpoaksdpokasdpokaspdokaspodkapsodkapsokdpaoskdpaoskdpaoskdpaoskdpoaksdpaoksdpoaksdpoaksdpaoskdpaoskdpaoskdpaoskdpaoskdpoaskdpaoskdpaoskda",
+  "dpaoskdpoaksdpoaskdpaoksdpaoksdpoaksdpoaksdpaoskdpaoksdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpasokdaposkdpaoskdpaoskdaposkdpaoskdpaoskdpaoskdpaoskdpaoskdapsodka",
+  "epoaskdpoaksdpoaksdpoaksdpokasdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpokasdpokaspdokapsodkaposkdpoaskdpoasidjfpiasdjfpadsijfpoasidjfpaoisjdfpoiasjdfpoiasjdfpoiajsdfpoijasdpfoijasdpfoijaspdoifjapsodifjaposidjfpaoisdjfpaoisdjfpaoisdjf"
+];
