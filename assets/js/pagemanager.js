@@ -209,7 +209,7 @@ function closePage() {
  */
 function getVerticalSpace() {
   let topRec = scoreSection.getBoundingClientRect();
-  let bottomRec = ControlsSection.getBoundingClientRect();
+  let bottomRec = controlsSection.getBoundingClientRect();
 
   return bottomRec.top - topRec.bottom;
 }
@@ -315,14 +315,14 @@ function openGameScreen(e) {
 }
 
 // Element declarations
-// Player details inputs, splash screen section, game screen elements, play button, reset button & validation error element
+// Player details inputs, splash screen elements, game screen elements, play & reset buttons.
 const usernameInput = document.getElementById("input-username");
 const cookiesInput = document.getElementById("input-cookies");
-const gameScreenElements = document.getElementsByClassName("main-page");
-const splashScreen = document.getElementById("intro-section");
-const errElement = document.getElementById("intro-error");
-const splashPlayButton = document.getElementById("intro-play");
-const splashResetButton = document.getElementById("intro-reset");
+const gameScreenElements = document.getElementsByClassName("game-screen");
+const splashScreen = document.getElementById("splash-screen");
+const errElement = document.getElementById("splash-screen-error");
+const splashPlayButton = document.getElementById("splash-screen-play");
+const splashResetButton = document.getElementById("splash-screen-reset");
 
 // Page menu buttons & pages
 const instructionsButton = document.getElementById("instructions-button");
@@ -334,7 +334,7 @@ const gamePage = document.getElementById("game-page");
 
 // Game Screen Sections
 const scoreSection = document.getElementById("score-section");
-const ControlsSection = document.getElementById("controls-section");
+const controlsSection = document.getElementById("controls-section");
 const gameSection = document.getElementById("game-section");
 
 // Tips element & Tip content array

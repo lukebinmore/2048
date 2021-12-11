@@ -21,36 +21,36 @@
     <img src="assets/images/placeholder-1x1.png" alt="2048 logo">
   </header>
 
-  <section id="intro-section">
+  <section id="splash-screen">
     <h1>
       Welcome!
     </h1>
-    <label id="intro-error" class="intro-label"></label>
-    <label class="intro-label" for="input-username">Enter your chosen name:</label>
+    <label id="splash-screen-error" class="splash-screen-label"></label>
+    <label class="splash-screen-label" for="input-username">Enter your chosen name:</label>
     <input type="text" id="input-username" name="input-username" maxlength=15>
 
     Instructions on how to play
 
-    <label class="intro-label" for="input-cookies">
+    <label class="splash-screen-label" for="input-cookies">
       Check to agree to the use of cookies for storing scoring and username data.*
     </label>
     <input type="checkbox" name="input-cookies" id="input-cookies">
-    <h2 id="intro-play">
+    <h2 id="splash-screen-play">
       Play Now!!!
     </h2>
-    <p id="intro-reset">Reset</p>
+    <p id="splash-screen-reset">Reset</p>
   </section>
 
-  <section id="menu-button-section" class="main-page" hidden>
+  <section id="menu-button-section" class="game-screen" hidden>
     <h2 id="instructions-button" data-state="closed">Instructions <i class="fas fa-info-circle"></i></h2>
     <h2 id="history-button" data-state="closed"><i class="fas fa-history"></i> Score History</h2>
   </section>
 
-  <section id="score-section" class="main-page" hidden>
+  <section id="score-section" class="game-screen" hidden>
     <h2>Current Score: <span id="score">2</span></h2>
   </section>
 
-  <section id="game-section" class="main-page" hidden>
+  <section id="game-section" class="game-screen" hidden>
     <div id="close-page-button" hidden>
       <i class="fas fa-times-circle"></i>
     </div>
@@ -65,7 +65,7 @@
     </div>
   </section>
 
-  <section id="controls-section" class="main-page" hidden>
+  <section id="controls-section" class="game-screen" hidden>
     <p class="control-top"><i class="fas fa-arrow-circle-up"></i></p>
     <p class="control-bottom"><i class="fas fa-arrow-circle-left"></i></p>
     <p class="control-bottom"><i class="fas fa-arrow-circle-down"></i></p>

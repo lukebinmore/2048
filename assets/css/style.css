@@ -40,25 +40,25 @@ header h1 {
   font-size: 5vh;
 }
 
-/* Intro prompt section */
-#intro-section {
+/* Splash screen section */
+#splash-screen {
   margin-bottom: 5vh;
 }
 
-#intro-section h1 {
+#splash-screen h1 {
   font-weight: 100;
   font-size: 5vh;
   border-bottom: 0.25em solid #000;
   padding: 0.25em;
 }
 
-.intro-label {
+.splash-screen-label {
   display: block;
   font-size: 3vh;
   margin: 1vh;
 }
 
-#intro-error {
+#splash-screen-error {
   color: #c00;
 }
 
@@ -80,7 +80,7 @@ header h1 {
   cursor: pointer;
 }
 
-#intro-play {
+#splash-screen-play {
   width: fit-content;
   font-size: 4vh;
   border: 0.25em solid #000;
@@ -91,17 +91,17 @@ header h1 {
   cursor: pointer;
 }
 
-#intro-play:hover {
+#splash-screen-play:hover {
   color: #fff;
   background-color: #000;
   border-radius: 0.75em;
 }
 
-#intro-play:active {
+#splash-screen-play:active {
   border-color: #fff;
 }
 
-#intro-reset {
+#splash-screen-reset {
   font-size: 2vh;
   border: 0.25em solid #000;
   border-radius: 0.5em;
@@ -110,12 +110,12 @@ header h1 {
   margin: 1vh auto;
 }
 
-#intro-reset:hover {
+#splash-screen-reset:hover {
   background-color: #000;
   color: #fff;
 }
 
-#intro-reset:active {
+#splash-screen-reset:active {
   border-color: #fff;
 }
 
