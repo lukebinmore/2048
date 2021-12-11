@@ -8,6 +8,7 @@ function createGrid() {
   }
 
   setTileSize();
+  getGameTiles();
 
   createTile();
   createTile();
@@ -15,6 +16,7 @@ function createGrid() {
 
 function setTileSize() {
   let tileSize = 100 / gameGridSize;
+  
   for (let div of gameGrid.getElementsByTagName("div")) {
     div.style.width = tileSize + '%';
     div.style.height = tileSize + '%';
@@ -31,33 +33,67 @@ function createTile() {
   }
 }
 
-function getCurrentGrid() {
-  let currentGrid = [];
-
+function getGameTiles() {
   for (let i = 0; i < gameGridSize * gameGridSize; i++) {
     if (i % gameGridSize === 0) {
-      let totals = [];
       let row = [];
 
       for (let i2 = 0; i2 < gameGridSize; i2++) {
-        row.push(parseInt(tiles[i + i2].innerHTML));
+        row.push(tiles[i + i2]);
       }
 
-      currentGrid.push(row);
-    }    
+      gameTiles.push(row);
+    }
+  }
+}
+
+function updateGameTilesValues() {
+  let values = [];
+
+  for (let row of gameTiles) {
+    let rowValues = [];
+
+    for (let column of row) {
+      rowValues.push(parseInt(column.innerHTML));
+    }
+    values.push(rowValues);
   }
 
-  return currentGrid;
+  gameTilesValues = values;
+}
+
+function gameShiftHorizontal(direction) {
+  updateGameTilesValues();
+
+  for (let i = 0; i < gameTiles.length; i++) {
+     let rowFiltered = gameTilesValues[i].filter(num => num);
+     let emptyTiles = gameGridSize - rowFiltered.length;
+     let newZeros = Array(emptyTiles).fill(0);
+     let rowUpdated;
+
+     if (direction === "left") {
+      rowUpdated = rowFiltered.concat(newZeros);
+     } else {
+      rowUpdated = newZeros.concat(rowFiltered);
+     }
+
+     for (let i2 = 0; i2 < gameGridSize; i2++) {
+       gameTiles[i][i2].innerHTML = rowUpdated[i2];
+     }
+  }
 }
 
 function startGame() {
   createGrid();
-  getCurrentGrid();
+
+  console.log(gameShiftHorizontal("left"));
 }
 
 // Game elements
 const gameGrid = document.getElementById("game-grid");
 const gameScore = document.getElementById("game-score");
+let gameTiles = [];
+let gameTilesValues = [];
 
 // Game settings
 const gameGridSize = 4;
