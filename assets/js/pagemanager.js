@@ -22,7 +22,7 @@ function setCookie(name, value) {
  * @param {string} name - Key of the cookie.
  * @returns - Value of the cookie.
  */
-function getCookie(name){
+function getCookie(name) {
   let cookies = document.cookie.split(";");
 
   for (let cookie of cookies) {
@@ -122,7 +122,7 @@ function closeSplashScreen() {
  * @returns - If details are valid for use.
  */
 function validatePlayerDetails() {
-    if (usernameInput.value === "") {
+  if (usernameInput.value === "") {
     failedValidation("username empty");
     usernameInput.focus();
     return false;
@@ -314,6 +314,14 @@ function openGameScreen(e) {
   }
 }
 
+function initializeScript() {
+  document.addEventListener("click", clickInput);
+  document.addEventListener("keypress", keyboardInput);
+  window.addEventListener("resize", setGameSectionSize);
+
+  updatePlayerFields();
+}
+
 // Element declarations
 // Player details inputs, splash screen elements, game screen elements, play & reset buttons.
 const usernameInput = document.getElementById("input-username");
@@ -347,11 +355,4 @@ let tips = [
   "epoaskdpoaksdpoaksdpoaksdpokasdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpokasdpokaspdokapsodkaposkdpoaskdpoasidjfpiasdjfpadsijfpoasidjfpaoisjdfpoiasjdfpoiasjdfpoiajsdfpoijasdpfoijasdpfoijaspdoifjapsodifjaposidjfpaoisdjfpaoisdjfpaoisdjf"
 ];
 
-
-
-document.addEventListener("click", clickInput);
-document.addEventListener("keypress", keyboardInput);
-window.addEventListener("resize", setGameSectionSize);
-
-
-updatePlayerFields();
+initializeScript();
