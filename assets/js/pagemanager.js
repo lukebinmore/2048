@@ -91,6 +91,12 @@ function keyboardInput(e) {
     case 'd':
       gameInputHorizontal("right");
       break;
+    case 'w':
+      gameInputVertical("up");
+      break;
+    case 's':
+      gameInputVertical("down");
+      break;
   }
 }
 
