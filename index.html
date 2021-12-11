@@ -8,8 +8,9 @@
   <meta name="description" content="2048 strategy game, designed for desktop and mobile">
   <meta name="keywords" content="2048, game, strategy, desktop, mobile, play">
 
-  <!-- Stylesheet -->
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/gamestyle.css">
 
   <title>2048</title>
 </head>
@@ -47,7 +48,7 @@
   </section>
 
   <section id="score-section" class="game-screen" hidden>
-    <h2>Current Score: <span id="score">2</span></h2>
+    <h2>Current Score: <span id="game-score">2</span></h2>
   </section>
 
   <section id="game-section" class="game-screen" hidden>
@@ -61,7 +62,9 @@
       Score History Area
     </div>
     <div id="game-page" class="game-section-pages">
-      Game Window
+      <div id="game-grid">
+
+      </div>
     </div>
   </section>
 
@@ -78,6 +81,7 @@
   <!-- Font Awesome script, cookie manager, game area resizing script, tips script & username prompt script -->
   <script src="https://kit.fontawesome.com/c77bea48db.js" crossorigin="anonymous"></script>
   <script src="assets/js/pagemanager.js"></script>
+  <script src="assets/js/gamescript.js"></script>
 </body>
 
 </html>

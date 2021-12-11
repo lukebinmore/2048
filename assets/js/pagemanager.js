@@ -311,6 +311,7 @@ function openGameScreen(e) {
     closeSplashScreen();
     setGameSectionSize();
     startTips();
+    startGame();
   }
 }
 
@@ -359,4 +360,4 @@ let tips = [
   "epoaskdpoaksdpoaksdpoaksdpokasdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpokasdpokaspdokapsodkaposkdpoaskdpoasidjfpiasdjfpadsijfpoasidjfpaoisjdfpoiasjdfpoiasjdfpoiajsdfpoijasdpfoijasdpfoijaspdoifjapsodifjaposidjfpaoisdjfpaoisdjfpaoisdjf"
 ];
 
-initializeScript();
+document.addEventListener("DOMContentLoaded", initializeScript);
