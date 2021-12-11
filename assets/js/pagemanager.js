@@ -58,6 +58,18 @@ function clickInput(e) {
     case splashResetButton:
       resetPlayerFields();
       break;
+    case gameUpButton:
+      gameInputVertical("up");
+      break;
+    case gameDownButton:
+      gameInputVertical("down");
+      break;
+    case gameLeftButton:
+      gameInputHorizontal("left");
+      break;
+    case gameRightButton:
+      gameInputHorizontal("right");
+      break;
   }
 
   switch (e.target.parentElement) {
@@ -69,6 +81,18 @@ function clickInput(e) {
       break;
     case closePageButton:
       closePage();
+      break;
+    case gameUpButton:
+      gameInputVertical("up");
+      break;
+    case gameDownButton:
+      gameInputVertical("down");
+      break;
+    case gameLeftButton:
+      gameInputHorizontal("left");
+      break;
+    case gameRightButton:
+      gameInputHorizontal("right");
       break;
   }
 }
@@ -95,6 +119,21 @@ function keyboardInput(e) {
       gameInputVertical("up");
       break;
     case 's':
+      gameInputVertical("down");
+      break;
+  }
+
+  switch (e.keyCode) {
+    case 37:
+      gameInputHorizontal("left");
+      break;
+    case 39:
+      gameInputHorizontal("right");
+      break;
+    case 38:
+      gameInputVertical("up");
+      break;
+    case 40:
       gameInputVertical("down");
       break;
   }
@@ -334,6 +373,7 @@ function openGameScreen(e) {
 function initializeScript() {
   document.addEventListener("click", clickInput);
   document.addEventListener("keypress", keyboardInput);
+  document.addEventListener("keydown", keyboardInput);
   window.addEventListener("resize", setGameSectionSize);
 
   updatePlayerFields();
@@ -361,6 +401,12 @@ const gamePage = document.getElementById("game-page");
 const scoreSection = document.getElementById("score-section");
 const controlsSection = document.getElementById("controls-section");
 const gameSection = document.getElementById("game-section");
+
+// On Screen Game buttons
+const gameUpButton = document.getElementById("game-control-up");
+const gameLeftButton = document.getElementById("game-control-left");
+const gameDownButton = document.getElementById("game-control-down");
+const gameRightButton = document.getElementById("game-control-right");
 
 // Tips element & Tip content array
 const tipElement = document.getElementById("tips");
