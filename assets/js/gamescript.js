@@ -1,6 +1,6 @@
 function createGrid() {
   for (let i = 0; i < gameGridSize * gameGridSize; i++) {
-    let tile = document.createElement("div");
+    let tile = document.createElement("h2");
 
     tile.innerHTML = 0;
     gameGrid.appendChild(tile);
@@ -17,9 +17,9 @@ function createGrid() {
 function setTileSize() {
   let tileSize = 100 / gameGridSize;
 
-  for (let div of gameGrid.getElementsByTagName("div")) {
-    div.style.width = tileSize + '%';
-    div.style.height = tileSize + '%';
+  for (let tile of gameGrid.getElementsByTagName("h2")) {
+    tile.style.width = tileSize + '%';
+    tile.style.height = tileSize + '%';
   }
 }
 

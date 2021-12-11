@@ -165,6 +165,8 @@ header h1 {
   border-radius: 0.5em;
   box-sizing: border-box;
   font-size: 3vh;
+  overflow: hidden;
+  background-color: #000;
 }
 
 #close-page-button:hover {
@@ -182,7 +184,7 @@ header h1 {
 
 #history-page {
   background-color: blue;
-} 
+}
 
 /* Game controls section */
 #controls-section {

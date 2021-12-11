@@ -6,8 +6,10 @@
   background-color: #000;
 }
 
-#game-grid div {
+#game-grid h2 {
   border: 0.15em solid #000;
+  border-radius: 0.5em;
   box-sizing: border-box;
-  background-color: cyan;
+  line-height: 250%;
+  background-color: #E0E0E0;
 }
