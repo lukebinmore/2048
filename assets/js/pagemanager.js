@@ -1,5 +1,3 @@
-// Cookie managment functions
-
 function createCookie() {
   document.cookie = "expires=Tue, 19 Jan 2038 04:14:07 GMT";
 }
@@ -22,10 +20,7 @@ function getCookie(name){
   return "";
 }
 
-
-
 // User input management functions
-
 function clickInput(e) {
   switch (e.target) {
     case (instructionsButton):
@@ -52,15 +47,8 @@ function clickInput(e) {
   }
 }
 
-
-
-
 // Intro page functions
-
 function updateUsernameField() {
-  let usernameInput = document.getElementById("input-username");
-  let cookiesInput = document.getElementById("input-cookies");
-
   if (getCookie("username") !== "") {
     usernameInput.value = getCookie("username");
   } else {
@@ -73,9 +61,6 @@ function updateUsernameField() {
 }
 
 function changePage() {
-  let pageElements = document.getElementsByClassName("main-page");
-  let introSection = document.getElementById("intro-section");
-
   introSection.hidden = true;
 
   for (let element of pageElements) {
@@ -84,10 +69,7 @@ function changePage() {
 }
 
 function validateInput() {
-  let usernameInput = document.getElementById("input-username");
-  let cookiesInput = document.getElementById("input-cookies");
-
-  if (usernameInput.value === "") {
+    if (usernameInput.value === "") {
     failedValidation("username empty");
     usernameInput.focus();
     return false;
@@ -106,7 +88,6 @@ function validateInput() {
 }
 
 function failedValidation(input) {
-  let errElement = document.getElementById("intro-error");
   switch (input) {
     case "username empty":
       errElement.innerText = "Please enter a username!";
@@ -118,9 +99,9 @@ function failedValidation(input) {
 }
 
 function resetFields() {
-  document.getElementById("input-username").value = "";
-  document.getElementById("input-cookies").checked = false;
-  document.getElementById("intro-error").innerText = "";
+  usernameInput.value = "";
+  cookiesInput.checked = false;
+  errElement.innerText = "";
 
   setCookie("username", "");
   setCookie("cookies", "");
@@ -152,16 +133,7 @@ function startUsernameScript() {
   document.addEventListener("keypress", clickPlay);
 }
 
-startUsernameScript();
-
-
-
-
-
-
-
 // Menu button functions
-
 function openInstructions() {
   closePage();
   closePageButton.hidden = false;
@@ -183,17 +155,10 @@ function closePage() {
   gamePage.hidden = false;
 }
 
-
-
-
-
-
-
 // Game section resize functions
-
 function getVerticalSpace() {
-  let topRec = document.getElementById("score-section").getBoundingClientRect();
-  let bottomRec = document.getElementById("controls-section").getBoundingClientRect();
+  let topRec = scoreSection.getBoundingClientRect();
+  let bottomRec = ControlsSection.getBoundingClientRect();
 
   return bottomRec.top - topRec.bottom;
 }
@@ -210,10 +175,8 @@ function compareSpace() {
 }
 
 function setSpace() {
-  let game = document.getElementById("game-section");
-
-  game.style.width = compareSpace() + "px";
-  game.style.height = compareSpace() + "px";
+  gameSection.style.width = compareSpace() + "px";
+  gameSection.style.height = compareSpace() + "px";
 }
 
 function startWindowScript() {
@@ -223,16 +186,8 @@ function startWindowScript() {
   });
 }
 
-
-
-
-
-
-
 // Tips bar functions
-
 function nextTip() {
-  let tipElement = document.getElementById("tips");
   let tipIndex = newTipIndex(tipElement);
 
   tipElement.innerText = tips[tipIndex];
@@ -271,32 +226,29 @@ function startTipsScript() {
   });
 }
 
-
-
-
-
-
-
-
-
-
 // Element declarations
+// Player details inputs, splash screen section, game screen elements & validation error element
+const usernameInput = document.getElementById("input-username");
+const cookiesInput = document.getElementById("input-cookies");
+const pageElements = document.getElementsByClassName("main-page");
+const introSection = document.getElementById("intro-section");
+const errElement = document.getElementById("intro-error");
 
-let instructionsButton = document.getElementById("instructions-button");
-let historyButton = document.getElementById("history-button");
-let closePageButton = document.getElementById("close-page-button");
+// Page menu buttons & pages
+const instructionsButton = document.getElementById("instructions-button");
+const historyButton = document.getElementById("history-button");
+const closePageButton = document.getElementById("close-page-button");
+const instructionsPage = document.getElementById("instructions-page");
+const historyPage = document.getElementById("history-page");
+const gamePage = document.getElementById("game-page");
 
-let instructionsPage = document.getElementById("instructions-page");
-let historyPage = document.getElementById("history-page");
-let gamePage = document.getElementById("game-page");
+// Game Screen Sections
+const scoreSection = document.getElementById("score-section");
+const ControlsSection = document.getElementById("controls-section");
+const gameSection = document.getElementById("game-section");
 
-document.addEventListener("click", clickInput);
-
-
-
-
-// Tips array declaration
-
+// Tips element & Tip content array
+const tipElement = document.getElementById("tips");
 let tips = [
   "aoipasdfkdoskfposdkfposkdfpoksdpfokspdofkpsodkfposkdfposkdfp",
   "bpoakspdokapsokdpaoskdpoaksdpokaspodkapsokdaposkdpoaksdpoaksdpokaspdokapsodkaposkdpoaksd",
@@ -304,3 +256,9 @@ let tips = [
   "dpaoskdpoaksdpoaskdpaoksdpaoksdpoaksdpoaksdpaoskdpaoksdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpasokdaposkdpaoskdpaoskdaposkdpaoskdpaoskdpaoskdpaoskdpaoskdapsodka",
   "epoaskdpoaksdpoaksdpoaksdpokasdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpokasdpokaspdokapsodkaposkdpoaskdpoasidjfpiasdjfpadsijfpoasidjfpaoisjdfpoiasjdfpoiasjdfpoiajsdfpoijasdpfoijasdpfoijaspdoifjapsodifjaposidjfpaoisdjfpaoisdjfpaoisdjf"
 ];
+
+
+
+document.addEventListener("click", clickInput);
+
+startUsernameScript();
