@@ -8,8 +8,5 @@
 }
 
 #game-grid div {
-  width: 22%;
-  height: 22%;
-  
   background-color: cyan;
 }
