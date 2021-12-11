@@ -169,7 +169,10 @@ function resetPlayerFields() {
   setCookie("cookies", "");
 }
 
-// Menu button functions
+/**
+ * Instructions Opener.
+ * Opens the instructions page in the game window.
+ */
 function openInstructions() {
   closePage();
   closePageButton.hidden = false;
@@ -177,6 +180,10 @@ function openInstructions() {
   instructionsPage.hidden = false;
 }
 
+/**
+ * History Opener.
+ * Opens the score history page in the game window.
+ */
 function openHistory() {
   closePage();
   closePageButton.hidden = false;
@@ -184,6 +191,10 @@ function openHistory() {
   historyPage.hidden = false;
 }
 
+/**
+ * Page Closer.
+ * Closes the instruction and history pages, and returns to the game page.
+ */
 function closePage() {
   instructionsPage.hidden = true;
   historyPage.hidden = true;
