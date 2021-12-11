@@ -36,7 +36,11 @@ function getCookie(name){
   return "";
 }
 
-// User input management functions
+/**
+ * Click Input Manager.
+ * Manages and directs click based input to the appropriate function.
+ * @param {event} e - Click event.
+ */
 function clickInput(e) {
   switch (e.target) {
     case (instructionsButton):
