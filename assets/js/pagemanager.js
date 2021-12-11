@@ -314,6 +314,10 @@ function openGameScreen(e) {
   }
 }
 
+/**
+ * Page Manager Initializer.
+ * Starts basic operations of script, and runs inistal starting functions.
+ */
 function initializeScript() {
   document.addEventListener("click", clickInput);
   document.addEventListener("keypress", keyboardInput);
