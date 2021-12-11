@@ -239,7 +239,10 @@ function setGameSectionSize() {
   gameSection.style.height = compareSpace() + "px";
 }
 
-// Tips bar functions
+/**
+ * Tip Switcher
+ * Sets the new tip, set's the correct animation speed & restarts animation.
+ */
 function nextTip() {
   let tipIndex = newTipIndex(tipElement);
 
@@ -248,35 +251,54 @@ function nextTip() {
   restartAnimation(tipElement);
 }
 
-function newTipIndex(e) {
-  if (e.dataset.tipindex < tips.length - 1) {
-    ++e.dataset.tipindex;
+/**
+ * Tip Index Updater/Grabber.
+ * Gets the current tip index, increases by 1 and updates the stored index.
+ * @param {ibject} element - Tips element.
+ * @returns - New index.
+ */
+function newTipIndex(element) {
+  if (element.dataset.tipindex < tips.length - 1) {
+    ++element.dataset.tipindex;
   } else {
-    e.dataset.tipindex = 0;
+    element.dataset.tipindex = 0;
   }
 
-  return e.dataset.tipindex;
+  return element.dataset.tipindex;
 }
 
-function updateAnimationSpeed(e, tipIndex) {
-  let width = e.offsetWidth;
+/**
+ * Tip Animation Setter.
+ * Calculates then sets the animation speed for the new tip to be displayed.
+ * @param {object} element - Tips element.
+ * @param {integer} tipIndex - Tip index.
+ */
+function updateAnimationSpeed(element, tipIndex) {
+  let width = element.offsetWidth;
   let duration = 3 * (width / 100);
 
-  e.style.animationDuration = duration + "s";
-  e.style.animationIterationCount = 1;
+  element.style.animationDuration = duration + "s";
+  element.style.animationIterationCount = 1;
 }
 
-function restartAnimation(e) {
-  e.classList.remove("tips-animation");
-  void e.offsetWidth;
-  e.classList.add("tips-animation");
+/**
+ * Tip Animation Restarter.
+ * Restarts the animation for the new top to be displayed.
+ * @param {object} element - Tips element.
+ */
+function restartAnimation(element) {
+  element.classList.remove("tips-animation");
+  void element.offsetWidth;
+  element.classList.add("tips-animation");
 }
 
-function startTipsScript() {
+/**
+ * Tips Starter.
+ * Sets the first tip, and starts the animation.
+ */
+function startTips() {
   nextTip();
-  document.getElementById("tips").addEventListener("animationend", function(){
-    nextTip();
-  });
+  document.getElementById("tips").addEventListener("animationend", nextTip);
 }
 
 /**
@@ -288,6 +310,7 @@ function openGameScreen(e) {
   if (validatePlayerDetails()) {
     closeSplashScreen();
     setGameSectionSize();
+    startTips();
   }
 }
 
