@@ -16,7 +16,7 @@ function createGrid() {
 
 function setTileSize() {
   let tileSize = 100 / gameGridSize;
-  
+
   for (let div of gameGrid.getElementsByTagName("div")) {
     div.style.width = tileSize + '%';
     div.style.height = tileSize + '%';
@@ -83,10 +83,25 @@ function gameShiftHorizontal(direction) {
   }
 }
 
+function gameCombineHorrizontal() {
+  updateGameTilesValues();
+
+  for (let row of gameTiles) {
+    for (let i = 0; i < row.length - 1; i++) {
+      if (row[i].innerHTML === row[i + 1].innerHTML) {
+        row[i].innerHTML = parseInt(row[i].innerHTML) * 2 ;
+        row[i + 1].innerHTML = 0;
+      }
+    }
+  }
+}
+
 function startGame() {
   createGrid();
 
-  console.log(gameShiftHorizontal("left"));
+  console.log(gameShiftHorizontal("right"));
+  gameCombineHorrizontal();
+  console.log(gameShiftHorizontal("right"));
 }
 
 // Game elements
