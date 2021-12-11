@@ -108,6 +108,7 @@ header h1 {
   width: fit-content;
   padding: 5px;
   margin: 1vh auto;
+  cursor: pointer;
 }
 
 #splash-screen-reset:hover {
@@ -231,5 +232,16 @@ footer {
 
   to {
     transform: translateX(-100%);
+  }
+}
+
+/* Media queries */
+@media screen and (max-width:500px) {
+  header h1 {
+    margin: 0 3vw;
+  }
+
+  #menu-button-section h2 {
+    font-size: 2vh;
   }
 }
