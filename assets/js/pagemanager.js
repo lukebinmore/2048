@@ -1,11 +1,27 @@
+/**
+ * Cookie Creater.
+ * Creates an empty cookie by setting the cookie expiry date.
+ */
 function createCookie() {
   document.cookie = "expires=Tue, 19 Jan 2038 04:14:07 GMT";
 }
 
+/**
+ * Cookier Setter.
+ * Sets the value of a cookie, or creates.
+ * @param {string} name - Key of the cookie.
+ * @param {string} value - Value of the cookie.
+ */
 function setCookie(name, value) {
   document.cookie = name + "=" + value + ";";
 }
 
+/**
+ * Cookie Grabber.
+ * Gets the value of a cookie from the key supplied.
+ * @param {string} name - Key of the cookie.
+ * @returns - Value of the cookie.
+ */
 function getCookie(name){
   let cookies = document.cookie.split(";");
 
