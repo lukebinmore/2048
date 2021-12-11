@@ -85,6 +85,12 @@ function keyboardInput(e) {
         openGameScreen();
       }
       break;
+    case 'a':
+      gameInputHorizontal("left");
+      break;
+    case 'd':
+      gameInputHorizontal("right");
+      break;
   }
 }
 

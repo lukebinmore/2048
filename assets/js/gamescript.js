@@ -96,6 +96,13 @@ function gameCombineHorrizontal() {
   }
 }
 
+function gameInputHorizontal(direction) {
+  gameShiftHorizontal(direction);
+  gameCombineHorrizontal();
+  gameShiftHorizontal(direction);
+  createTile();
+}
+
 function startGame() {
   createGrid();
 
