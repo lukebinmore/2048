@@ -43,14 +43,20 @@ function getCookie(name){
  */
 function clickInput(e) {
   switch (e.target) {
-    case (instructionsButton):
+    case instructionsButton:
       openInstructions();
       break;
-    case (historyButton):
+    case historyButton:
       openHistory()
       break;
-    case (closePageButton):
+    case closePageButton:
       closePage();
+      break;
+    case splashPlayButton:
+      openGameScreen();
+      break;
+    case splashResetButton:
+      resetPlayerFields();
       break;
   }
 
@@ -61,14 +67,32 @@ function clickInput(e) {
     case historyButton:
       openHistory()
       break;
-    case (closePageButton):
+    case closePageButton:
       closePage();
       break;
   }
 }
 
-// Intro page functions
-function updateUsernameField() {
+/**
+ * Keyboard Input Manager.
+ * Manages and directs keyboard based input to the approrpiate function.
+ * @param {event} e - Keyboard event.
+ */
+function keyboardInput(e) {
+  switch (e.key) {
+    case "Enter":
+      if (!introSection.hidden) {
+        openGameScreen();
+      }
+      break;
+  }
+}
+
+/**
+ * Player Fields Updater.
+ * Updates the player fields on the splash screen with the values stored in cookies if they exist.
+ */
+function updatePlayerFields() {
   if (getCookie("username") !== "") {
     usernameInput.value = getCookie("username");
   } else {
@@ -80,7 +104,11 @@ function updateUsernameField() {
   }
 }
 
-function changePage() {
+/**
+ * Splash Screen Closer.
+ * Closes the splash screen and takes player to game screen.
+ */
+function closeSplashScreen() {
   introSection.hidden = true;
 
   for (let element of pageElements) {
@@ -88,7 +116,12 @@ function changePage() {
   }
 }
 
-function validateInput() {
+/**
+ * Player Details Validator.
+ * Validates the details entered by the user.
+ * @returns - If details are valid for use.
+ */
+function validatePlayerDetails() {
     if (usernameInput.value === "") {
     failedValidation("username empty");
     usernameInput.focus();
@@ -107,6 +140,11 @@ function validateInput() {
   return true;
 }
 
+/**
+ * Player Details Failed Validation Result.
+ * Provides the user with info on why the validation fails.
+ * @param {string} input - Failure reason.
+ */
 function failedValidation(input) {
   switch (input) {
     case "username empty":
@@ -118,39 +156,17 @@ function failedValidation(input) {
   }
 }
 
-function resetFields() {
+/**
+ * Player Details Resetter.
+ * Resets the player details inputs to default values.
+ */
+function resetPlayerFields() {
   usernameInput.value = "";
   cookiesInput.checked = false;
   errElement.innerText = "";
 
   setCookie("username", "");
   setCookie("cookies", "");
-}
-
-function clickPlay(e) {
-  if (e.type === "keypress") {
-    if (e.key !== "Enter") {
-      return;
-    }
-  }
-
-  if (validateInput()) {
-    changePage();
-    startWindowScript();
-    startTipsScript();
-    
-    document.removeEventListener("keypress", clickPlay);
-  }
-}
-
-function startUsernameScript() {
-  updateUsernameField();
-
-  document.getElementById("intro-play").addEventListener("click", clickPlay);
-  
-  document.getElementById("intro-reset").addEventListener("click", resetFields);
-
-  document.addEventListener("keypress", clickPlay);
 }
 
 // Menu button functions
@@ -246,13 +262,26 @@ function startTipsScript() {
   });
 }
 
+/**
+ * Game Screen Opener.
+ * Verifies player details, closes the splash screen, opens the game screen and starts features.
+ * @param {event} e 
+ */
+function openGameScreen(e) {
+  if (validatePlayerDetails()) {
+    closeSplashScreen();
+  }
+}
+
 // Element declarations
-// Player details inputs, splash screen section, game screen elements & validation error element
+// Player details inputs, splash screen section, game screen elements, play button, reset button & validation error element
 const usernameInput = document.getElementById("input-username");
 const cookiesInput = document.getElementById("input-cookies");
 const pageElements = document.getElementsByClassName("main-page");
 const introSection = document.getElementById("intro-section");
 const errElement = document.getElementById("intro-error");
+const splashPlayButton = document.getElementById("intro-play");
+const splashResetButton = document.getElementById("intro-reset");
 
 // Page menu buttons & pages
 const instructionsButton = document.getElementById("instructions-button");
@@ -280,5 +309,6 @@ let tips = [
 
 
 document.addEventListener("click", clickInput);
+document.addEventListener("keypress", keyboardInput);
 
-startUsernameScript();
+updatePlayerFields();
