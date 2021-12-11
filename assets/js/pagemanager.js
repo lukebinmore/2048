@@ -81,7 +81,7 @@ function clickInput(e) {
 function keyboardInput(e) {
   switch (e.key) {
     case "Enter":
-      if (!introSection.hidden) {
+      if (!splashScreen.hidden) {
         openGameScreen();
       }
       break;
@@ -109,9 +109,9 @@ function updatePlayerFields() {
  * Closes the splash screen and takes player to game screen.
  */
 function closeSplashScreen() {
-  introSection.hidden = true;
+  splashScreen.hidden = true;
 
-  for (let element of pageElements) {
+  for (let element of gameScreenElements) {
     element.hidden = false;
   }
 }
@@ -202,7 +202,11 @@ function closePage() {
   gamePage.hidden = false;
 }
 
-// Game section resize functions
+/**
+ * Vertical Space Retreiver.
+ * Gets the vertical space between score section and the controls section.
+ * @returns - The vertical space in pixels.
+ */
 function getVerticalSpace() {
   let topRec = scoreSection.getBoundingClientRect();
   let bottomRec = ControlsSection.getBoundingClientRect();
@@ -210,6 +214,11 @@ function getVerticalSpace() {
   return bottomRec.top - topRec.bottom;
 }
 
+/**
+ * Space Comparer.
+ * Compares the amount of vertical space between the score section and controls section, to the width of the page.
+ * @returns - The smallest space in pixels.
+ */
 function compareSpace() {
   let vertical = getVerticalSpace();
   let horizontal = document.body.getBoundingClientRect().right;
@@ -221,16 +230,13 @@ function compareSpace() {
   }
 }
 
-function setSpace() {
+/**
+ * Space Setter.
+ * Set's the width and height of the game section to the available space.
+ */
+function setGameSectionSize() {
   gameSection.style.width = compareSpace() + "px";
   gameSection.style.height = compareSpace() + "px";
-}
-
-function startWindowScript() {
-  setSpace();
-  window.addEventListener("resize", function () {
-    setSpace();
-  });
 }
 
 // Tips bar functions
@@ -281,6 +287,7 @@ function startTipsScript() {
 function openGameScreen(e) {
   if (validatePlayerDetails()) {
     closeSplashScreen();
+    setGameSectionSize();
   }
 }
 
@@ -288,8 +295,8 @@ function openGameScreen(e) {
 // Player details inputs, splash screen section, game screen elements, play button, reset button & validation error element
 const usernameInput = document.getElementById("input-username");
 const cookiesInput = document.getElementById("input-cookies");
-const pageElements = document.getElementsByClassName("main-page");
-const introSection = document.getElementById("intro-section");
+const gameScreenElements = document.getElementsByClassName("main-page");
+const splashScreen = document.getElementById("intro-section");
 const errElement = document.getElementById("intro-error");
 const splashPlayButton = document.getElementById("intro-play");
 const splashResetButton = document.getElementById("intro-reset");
@@ -321,5 +328,7 @@ let tips = [
 
 document.addEventListener("click", clickInput);
 document.addEventListener("keypress", keyboardInput);
+window.addEventListener("resize", setGameSectionSize);
+
 
 updatePlayerFields();
