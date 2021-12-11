@@ -124,6 +124,7 @@ function gameInputHorizontal(direction) {
   gameCombineHorrizontal();
   gameShiftHorizontal(direction);
   createTile();
+  updateGameScore();
 }
 
 function gameInputVertical(direction) {
@@ -131,6 +132,15 @@ function gameInputVertical(direction) {
   gameCombineVertical();
   gameShiftVertical(direction);
   createTile();
+  updateGameScore();
+}
+
+function updateGameScore() {
+  for (let tile of tiles) {
+    if (parseInt(tile.innerHTML) > parseInt(gameScore.innerHTML)) {
+      gameScore.innerHTML = parseInt(tile.innerHTML);
+    }
+  }
 }
 
 function startGame() {
