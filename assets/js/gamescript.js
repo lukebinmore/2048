@@ -47,26 +47,15 @@ function getGameTiles() {
   }
 }
 
-function updateGameTilesValues() {
-  let values = [];
-
-  for (let row of gameTiles) {
-    let rowValues = [];
-
-    for (let column of row) {
-      rowValues.push(parseInt(column.innerHTML));
-    }
-    values.push(rowValues);
-  }
-
-  gameTilesValues = values;
-}
-
 function gameShiftHorizontal(direction) {
-  updateGameTilesValues();
+  for (let iR = 0; iR < gameGridSize; iR++) {
+    let row = [];
 
-  for (let i = 0; i < gameGridSize; i++) {
-    let rowFiltered = gameTilesValues[i].filter(num => num);
+    for (let iC = 0; iC < gameGridSize; iC++) {
+      row.push(parseInt(gameTiles[iR][iC].innerHTML));
+    }
+
+    let rowFiltered = row.filter(num => num);
     let emptyTiles = gameGridSize - rowFiltered.length;
     let newZeros = Array(emptyTiles).fill(0);
     let rowUpdated;
@@ -77,20 +66,18 @@ function gameShiftHorizontal(direction) {
       rowUpdated = newZeros.concat(rowFiltered);
     }
 
-    for (let i2 = 0; i2 < gameGridSize; i2++) {
-      gameTiles[i][i2].innerHTML = rowUpdated[i2];
+    for (let iC = 0; iC < gameGridSize; iC++) {
+      gameTiles[iR][iC].innerHTML = rowUpdated[iC];
     }
   }
 }
 
 function gameShiftVertical(direction) {
-  updateGameTilesValues();
-
-  for (let i = 0; i < gameGridSize; i++) {
+  for (let iC = 0; iC < gameGridSize; iC++) {
     let column = [];
 
-    for (let i2 = 0; i2 < gameGridSize; i2++) {
-      column.push(gameTilesValues[i2][i]);
+    for (let iR = 0; iR < gameGridSize; iR++) {
+      column.push(parseInt(gameTiles[iR][iC].innerHTML));
     }
 
     let columnFiltered = column.filter(num => num);
@@ -104,33 +91,29 @@ function gameShiftVertical(direction) {
       columnUpdated = newZeros.concat(columnFiltered);
     }
 
-    for (let i2 = 0; i2 < gameGridSize; i2++) {
-      gameTiles[i2][i].innerHTML = columnUpdated[i2];
+    for (let iR = 0; iR < gameGridSize; iR++) {
+      gameTiles[iR][iC].innerHTML = columnUpdated[iR];
     }
   }
 }
 
 function gameCombineHorrizontal() {
-  updateGameTilesValues();
-
-  for (let row of gameTiles) {
-    for (let i = 0; i < row.length - 1; i++) {
-      if (row[i].innerHTML === row[i + 1].innerHTML) {
-        row[i].innerHTML = parseInt(row[i].innerHTML) * 2;
-        row[i + 1].innerHTML = 0;
+  for (let iR = 0; iR < gameGridSize; iR++) {
+    for (let iC = 0; iC < gameGridSize - 1; iC++) {
+      if (gameTiles[iR][iC].innerHTML === gameTiles[iR][iC + 1].innerHTML) {
+        gameTiles[iR][iC].innerHTML = parseInt(gameTiles[iR][iC].innerHTML * 2);
+        gameTiles[iR][iC + 1].innerHTML = 0;
       }
     }
   }
 }
 
 function gameCombineVertical() {
-  updateGameTilesValues();
-
-  for (let i = 0; i < gameGridSize - 1; i++) {
-    for (let i2 = 0; i2 < gameGridSize; i2++) {
-      if (gameTilesValues[i][i2] === gameTilesValues[i + 1][i2]) {
-        gameTiles[i][i2].innerHTML = gameTilesValues[i][i2] * 2;
-        gameTiles[i + 1][i2].innerHTML = 0;
+  for (let iC = 0; iC < gameGridSize; iC++) {
+    for (let iR = 0; iR < gameGridSize - 1; iR++) {
+      if (gameTiles[iR][iC].innerHTML === gameTiles[iR + 1][iC].innerHTML) {
+        gameTiles[iR][iC].innerHTML = parseInt(gameTiles[iR][iC].innerHTML * 2);
+        gameTiles[iR + 1][iC].innerHTML = 0;
       }
     }
   }
@@ -158,7 +141,6 @@ function startGame() {
 const gameGrid = document.getElementById("game-grid");
 const gameScore = document.getElementById("game-score");
 let gameTiles = [];
-let gameTilesValues = [];
 
 // Game settings
 const gameGridSize = 4;

@@ -3,10 +3,11 @@
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-
-  background-color: pink;
+  background-color: #000;
 }
 
 #game-grid div {
+  border: 0.15em solid #000;
+  box-sizing: border-box;
   background-color: cyan;
 }
