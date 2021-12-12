@@ -12,6 +12,8 @@ function createGrid() {
 
   createTile();
   createTile();
+
+  updateTileColor();
 }
 
 function setTileSize() {
@@ -125,6 +127,7 @@ function gameInputHorizontal(direction) {
   gameShiftHorizontal(direction);
   createTile();
   updateGameScore();
+  updateTileColor();
 }
 
 function gameInputVertical(direction) {
@@ -133,12 +136,27 @@ function gameInputVertical(direction) {
   gameShiftVertical(direction);
   createTile();
   updateGameScore();
+  updateTileColor();
 }
 
 function updateGameScore() {
   for (let tile of tiles) {
     if (parseInt(tile.innerHTML) > parseInt(gameScore.innerHTML)) {
       gameScore.innerHTML = parseInt(tile.innerHTML);
+    }
+  }
+}
+
+function updateTileColor() {
+  for (let i = 0; i < tiles.length; i++) {
+    let colorIndex = Math.floor(Math.log2(parseInt(tiles[i].innerHTML) + 1));
+
+    tiles[i].style.backgroundColor = gameColors[colorIndex];
+
+    if (tiles[i].innerHTML == 0) {
+      tiles[i].style.color = gameColors[colorIndex];
+    } else {
+      tiles[i].style.color = "#000";
     }
   }
 }
@@ -157,3 +175,25 @@ const gameGridSize = 4;
 
 // Game variables
 let tiles = [];
+
+// Game colors
+const gameColors = [
+  "#E0E0E0",
+  "hsl(30, 100%, 60%)",
+  "hsl(50, 100%, 60%)",
+  "hsl(70, 100%, 60%)",
+  "hsl(90, 100%, 60%)",
+  "hsl(110, 100%, 60%)",
+  "hsl(130, 100%, 60%)",
+  "hsl(150, 100%, 60%)",
+  "hsl(170, 100%, 60%)",
+  "hsl(190, 100%, 60%)",
+  "hsl(210, 100%, 60%)",
+  "hsl(230, 100%, 60%)",
+  "hsl(250, 100%, 60%)",
+  "hsl(270, 100%, 60%)",
+  "hsl(290, 100%, 60%)",
+  "hsl(310, 100%, 60%)",
+  "hsl(330, 100%, 60%)",
+  "hsl(350, 100%, 60%)"
+]
