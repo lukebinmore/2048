@@ -296,11 +296,11 @@ function setGameSectionSize() {
  * Sets the new tip, set's the correct animation speed & restarts animation.
  */
 function nextTip() {
-  let tipIndex = newTipIndex(tipElement);
+  let tipIndex = newTipIndex();
 
   tipElement.innerText = tips[tipIndex];
-  updateAnimationSpeed(tipElement, tipIndex);
-  restartAnimation(tipElement);
+  updateAnimationSpeed(tipIndex);
+  restartAnimation();
 }
 
 /**
@@ -309,14 +309,14 @@ function nextTip() {
  * @param {ibject} element - Tips element.
  * @returns - New index.
  */
-function newTipIndex(element) {
-  if (element.dataset.tipindex < tips.length - 1) {
-    ++element.dataset.tipindex;
+function newTipIndex() {
+  if (tipElement.dataset.tipindex < tips.length - 1) {
+    ++tipElement.dataset.tipindex;
   } else {
-    element.dataset.tipindex = 0;
+    tipElement.dataset.tipindex = 0;
   }
 
-  return element.dataset.tipindex;
+  return tipElement.dataset.tipindex;
 }
 
 /**
@@ -325,12 +325,12 @@ function newTipIndex(element) {
  * @param {object} element - Tips element.
  * @param {integer} tipIndex - Tip index.
  */
-function updateAnimationSpeed(element, tipIndex) {
-  let width = element.offsetWidth;
+function updateAnimationSpeed(tipIndex) {
+  let width = tipElement.offsetWidth;
   let duration = 3 * (width / 100);
 
-  element.style.animationDuration = duration + "s";
-  element.style.animationIterationCount = 1;
+  tipElement.style.animationDuration = duration + "s";
+  tipElement.style.animationIterationCount = 1;
 }
 
 /**
@@ -338,10 +338,10 @@ function updateAnimationSpeed(element, tipIndex) {
  * Restarts the animation for the new top to be displayed.
  * @param {object} element - Tips element.
  */
-function restartAnimation(element) {
-  element.classList.remove("tips-animation");
-  void element.offsetWidth;
-  element.classList.add("tips-animation");
+function restartAnimation() {
+  tipElement.classList.remove("tips-animation");
+  void tipElement.offsetWidth;
+  tipElement.classList.add("tips-animation");
 }
 
 /**
@@ -350,7 +350,7 @@ function restartAnimation(element) {
  */
 function startTips() {
   nextTip();
-  document.getElementById("tips").addEventListener("animationend", nextTip);
+  tipElement.addEventListener("animationend", nextTip);
 }
 
 /**
