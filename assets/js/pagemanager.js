@@ -105,9 +105,7 @@ function clickInput(e) {
 function keyboardInput(e) {
   switch (e.key) {
     case "Enter":
-      if (!splashScreen.hidden) {
-        openGameScreen();
-      }
+      openGameScreen();
       break;
     case 'a':
       gameInputHorizontal("left");
@@ -358,11 +356,13 @@ function startTips() {
  * @param {event} e 
  */
 function openGameScreen(e) {
-  if (validatePlayerDetails()) {
-    closeSplashScreen();
-    setGameSectionSize();
-    startTips();
-    startGame();
+  if (!splashScreen.hidden) {
+    if (validatePlayerDetails()) {
+      closeSplashScreen();
+      setGameSectionSize();
+      startTips();
+      startGame();
+    }
   }
 }
 

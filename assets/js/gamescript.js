@@ -174,25 +174,29 @@ function gameCombineVertical() {
 }
 
 function gameInputHorizontal(direction) {
-  if (gameShiftHorizontalCheck(direction)) {
-    gameShiftHorizontal(direction)
-    gameCombineHorrizontal();
-    gameShiftHorizontal(direction);
-    createTile();
+  if (!game.hidden) {
+    if (gameShiftHorizontalCheck(direction)) {
+      gameShiftHorizontal(direction)
+      gameCombineHorrizontal();
+      gameShiftHorizontal(direction);
+      createTile();
+    }
+    updateGameScore();
+    updateTileColor();
   }
-  updateGameScore();
-  updateTileColor();
 }
 
 function gameInputVertical(direction) {
-  if (gameShiftVerticalCheck(direction)) {
-    gameShiftVertical(direction)
-    gameCombineVertical();
-    gameShiftVertical(direction);
-    createTile();
+  if (!game.hidden) {
+    if (gameShiftVerticalCheck(direction)) {
+      gameShiftVertical(direction)
+      gameCombineVertical();
+      gameShiftVertical(direction);
+      createTile();
+    }
+    updateGameScore();
+    updateTileColor();
   }
-  updateGameScore();
-  updateTileColor();
 }
 
 function updateGameScore() {
@@ -222,6 +226,7 @@ function startGame() {
 }
 
 // Game elements
+const game = document.getElementById("game-page");
 const gameGrid = document.getElementById("game-grid");
 const gameScore = document.getElementById("game-score");
 let gameTiles = [];
