@@ -119,6 +119,9 @@ function keyboardInput(e) {
     case 's':
       gameInputVertical("down");
       break;
+    case 'Escape':
+      closePage();
+      break;
   }
 
   switch (e.keyCode) {
