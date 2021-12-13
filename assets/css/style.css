@@ -186,6 +186,26 @@ header h1 {
   background-color: blue;
 }
 
+#game-grid {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000;
+}
+
+#game-grid h2 {
+  border: 0.15em solid #000;
+  border-radius: 0.5em;
+  box-sizing: border-box;
+  line-height: 250%;
+  background-color: #E0E0E0;
+}
+
+#results-page {
+  background-color: orange;
+}
+
 /* Game controls section */
 #controls-section {
   font-size: 4.5vh;
