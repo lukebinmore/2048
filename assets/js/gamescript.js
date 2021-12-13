@@ -99,6 +99,58 @@ function gameShiftVertical(direction) {
   }
 }
 
+function gameShiftHorizontalCheck(direction) {
+  for (let iR = 0; iR < gameGridSize; iR++) {
+    let row = [];
+
+    for (let iC = 0; iC < gameGridSize; iC++) {
+      row.push(parseInt(gameTiles[iR][iC].innerHTML));
+    }
+
+    if (direction === "left") {
+      row.reverse();
+    }
+
+    for (let iC = 0; iC < gameGridSize - 1; iC++) {
+      if (row[iC] !== 0) {
+        if (row[iC + 1] === 0) {
+          return true;
+        } else if (row[iC] === row[iC + 1]) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+function gameShiftVerticalCheck(direction) {
+  for (let iC = 0; iC < gameGridSize; iC++) {
+    let column = [];
+
+    for (let iR = 0; iR < gameGridSize; iR++) {
+      column.push(parseInt(gameTiles[iR][iC].innerHTML));
+    }
+
+    if (direction === "up") {
+      column.reverse();
+    }
+
+    for (let iR = 0; iR < gameGridSize - 1; iR++) {
+      if (column[iR] !== 0) {
+        if (column[iR + 1] === 0) {
+          return true;
+        } else if (column[iR] === column[iR + 1]) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
 function gameCombineHorrizontal() {
   for (let iR = 0; iR < gameGridSize; iR++) {
     for (let iC = 0; iC < gameGridSize - 1; iC++) {
@@ -122,19 +174,23 @@ function gameCombineVertical() {
 }
 
 function gameInputHorizontal(direction) {
-  gameShiftHorizontal(direction);
-  gameCombineHorrizontal();
-  gameShiftHorizontal(direction);
-  createTile();
+  if (gameShiftHorizontalCheck(direction)) {
+    gameShiftHorizontal(direction)
+    gameCombineHorrizontal();
+    gameShiftHorizontal(direction);
+    createTile();
+  }
   updateGameScore();
   updateTileColor();
 }
 
 function gameInputVertical(direction) {
-  gameShiftVertical(direction);
-  gameCombineVertical();
-  gameShiftVertical(direction);
-  createTile();
+  if (gameShiftVerticalCheck(direction)) {
+    gameShiftVertical(direction)
+    gameCombineVertical();
+    gameShiftVertical(direction);
+    createTile();
+  }
   updateGameScore();
   updateTileColor();
 }
