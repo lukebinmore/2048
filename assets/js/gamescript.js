@@ -175,8 +175,8 @@ function gameCombineVertical() {
 
 function gameOverCheck() {
   if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")){
-    game.hidden = true;
-    gameResults.hidden = false;
+    gameGrid.style.display = "none";
+    gameResults.style.display = "block";
   }
 }
 
@@ -238,7 +238,7 @@ function startGame() {
 const game = document.getElementById("game-page");
 const gameGrid = document.getElementById("game-grid");
 const gameScore = document.getElementById("game-score");
-const gameResults = document.getElementById("results-page");
+const gameResults = document.getElementById("game-results");
 let gameTiles = [];
 
 // Game settings
