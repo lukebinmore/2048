@@ -230,13 +230,14 @@ footer {
   text-align: left;
   background-color: #000;
   color: #fff;
-  overflow: hidden;
+  /* /overflow: hidden; */
 }
 
 #tips {
   padding: 0 1vw;
   font-size: 2vh;
   width: fit-content;
+  font-family: Bubbles;
 }
 
 .tips-animation {

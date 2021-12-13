@@ -414,11 +414,11 @@ const gameRightButton = document.getElementById("game-control-right");
 // Tips element & Tip content array
 const tipElement = document.getElementById("tips");
 let tips = [
-  "aoipasdfkdoskfposdkfposkdfpoksdpfokspdofkpsodkfposkdfposkdfp",
-  "bpoakspdokapsokdpaoskdpoaksdpokaspodkapsokdaposkdpoaksdpoaksdpokaspdokapsodkaposkdpoaksd",
-  "cpoaksdpokasdpokaspdokaspodkapsodkapsokdpaoskdpaoskdpaoskdpaoskdpoaksdpaoksdpoaksdpoaksdpaoskdpaoskdpaoskdpaoskdpaoskdpoaskdpaoskdpaoskda",
-  "dpaoskdpoaksdpoaskdpaoksdpaoksdpoaksdpoaksdpaoskdpaoksdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpaoskdpasokdaposkdpaoskdpaoskdaposkdpaoskdpaoskdpaoskdpaoskdpaoskdapsodka",
-  "epoaskdpoaksdpoaksdpoaksdpokasdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpoaksdpokasdpokaspdokapsodkaposkdpoaskdpoasidjfpiasdjfpadsijfpoasidjfpaoisjdfpoiasjdfpoiasjdfpoiajsdfpoijasdpfoijasdpfoijaspdoifjapsodifjaposidjfpaoisdjfpaoisdjfpaoisdjf"
+  "You can use 'A, W, S, D', The arrow keys, and the arrow buttons above to play!",
+  "With the Instructions or Score History menus open, you can press the 'ESC' key, or the 'X' button in the top left corner to return to the game!",
+  "Try keeping your biggest tiles in a single corner, so that when you have a match, they aren't hidden behind other tiles!",
+  "Check out the Score History page at any time to view your past scores and learn more about your progress!",
+  "Check out the Instructions page at any time to view the aim of the game, instructions on how to play, and keyboard shortcuts that make playing the game easier!"
 ];
 
 document.addEventListener("DOMContentLoaded", initializeScript);
