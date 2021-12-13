@@ -173,6 +173,13 @@ function gameCombineVertical() {
   }
 }
 
+function gameOverCheck() {
+  if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")){
+    game.hidden = true;
+    gameResults.hidden = false;
+  }
+}
+
 function gameInputHorizontal(direction) {
   if (!game.hidden) {
     if (gameShiftHorizontalCheck(direction)) {
@@ -183,6 +190,7 @@ function gameInputHorizontal(direction) {
     }
     updateGameScore();
     updateTileColor();
+    gameOverCheck();
   }
 }
 
@@ -196,6 +204,7 @@ function gameInputVertical(direction) {
     }
     updateGameScore();
     updateTileColor();
+    gameOverCheck();
   }
 }
 
@@ -229,10 +238,11 @@ function startGame() {
 const game = document.getElementById("game-page");
 const gameGrid = document.getElementById("game-grid");
 const gameScore = document.getElementById("game-score");
+const gameResults = document.getElementById("results-page");
 let gameTiles = [];
 
 // Game settings
-const gameGridSize = 4;
+const gameGridSize = 2;
 
 // Game variables
 let tiles = [];
