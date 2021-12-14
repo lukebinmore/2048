@@ -58,6 +58,9 @@ function clickInput(e) {
     case gameRightButton:
       gameInputHorizontal("right");
       break;
+    case gameResetButton:
+      gameReset();
+      break;
   }
 
   switch (e.target.parentElement) {
@@ -410,6 +413,7 @@ const gameUpButton = document.getElementById("game-control-up");
 const gameLeftButton = document.getElementById("game-control-left");
 const gameDownButton = document.getElementById("game-control-down");
 const gameRightButton = document.getElementById("game-control-right");
+const gameResetButton = document.getElementById("game-reset");
 
 // Tips element & Tip content array
 const tipElement = document.getElementById("tips");

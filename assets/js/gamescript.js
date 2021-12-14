@@ -4,7 +4,7 @@ function createGrid() {
 
     tile.innerHTML = 0;
     gameGrid.appendChild(tile);
-    tiles.push(tile);
+    tilesList.push(tile);
   }
 
   setTileSize();
@@ -26,10 +26,10 @@ function setTileSize() {
 }
 
 function createTile() {
-  let randomNum = Math.floor(Math.random() * tiles.length);
+  let randomNum = Math.floor(Math.random() * tilesList.length);
 
-  if (tiles[randomNum].innerHTML == 0) {
-    tiles[randomNum].innerHTML = 2;
+  if (tilesList[randomNum].innerHTML == 0) {
+    tilesList[randomNum].innerHTML = 2;
   } else {
     createTile();
   }
@@ -41,7 +41,7 @@ function getGameTiles() {
       let row = [];
 
       for (let i2 = 0; i2 < gameGridSize; i2++) {
-        row.push(tiles[i + i2]);
+        row.push(tilesList[i + i2]);
       }
 
       gameTiles.push(row);
@@ -174,13 +174,13 @@ function gameCombineVertical() {
 }
 
 function gameOverCheck() {
-  if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")){
+  if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")) {
     gameGrid.style.display = "none";
     gameResults.style.display = "block";
     updateGameResults();
   }
 
-  for (let tile of tiles) {
+  for (let tile of tilesList) {
     if (parseInt(tile.innerHTML) === gameWinScore) {
       gameGrid.style.display = "none";
       gameResults.style.display = "block";
@@ -231,8 +231,18 @@ function gameInputVertical(direction) {
   }
 }
 
+function gameReset() {
+  gameGrid.style.display = "flex";
+  gameResults.style.display = "none";
+  gameScore.innerHTML = "2";
+  gameGrid.innerHTML = "";
+  tilesList = [];
+  gameTiles = [];
+  startGame();
+}
+
 function updateGameScore() {
-  for (let tile of tiles) {
+  for (let tile of tilesList) {
     if (parseInt(tile.innerHTML) > parseInt(gameScore.innerHTML)) {
       gameScore.innerHTML = parseInt(tile.innerHTML);
     }
@@ -240,15 +250,15 @@ function updateGameScore() {
 }
 
 function updateTileColor() {
-  for (let i = 0; i < tiles.length; i++) {
-    let colorIndex = Math.floor(Math.log2(parseInt(tiles[i].innerHTML) + 1));
+  for (let i = 0; i < tilesList.length; i++) {
+    let colorIndex = Math.floor(Math.log2(parseInt(tilesList[i].innerHTML) + 1));
 
-    tiles[i].style.backgroundColor = gameColors[colorIndex];
+    tilesList[i].style.backgroundColor = gameColors[colorIndex];
 
-    if (tiles[i].innerHTML == 0) {
-      tiles[i].style.color = gameColors[colorIndex];
+    if (tilesList[i].innerHTML == 0) {
+      tilesList[i].style.color = gameColors[colorIndex];
     } else {
-      tiles[i].style.color = "#000";
+      tilesList[i].style.color = "#000";
     }
   }
 }
@@ -276,7 +286,7 @@ const gameGridSize = 2;
 const gameWinScore = 8;
 
 // Game variables
-let tiles = [];
+let tilesList = [];
 
 // Game colors
 const gameColors = [
