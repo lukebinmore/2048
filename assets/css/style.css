@@ -167,7 +167,7 @@ header h1 {
   box-sizing: border-box;
   font-size: 3vh;
   background-color: #000;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 #close-page-button:hover {
@@ -185,6 +185,10 @@ header h1 {
 
 #history-page {
   background-color: blue;
+}
+
+#game-page {
+  overflow-y: scroll;
 }
 
 #game-grid {
