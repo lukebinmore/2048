@@ -1,3 +1,7 @@
+/**
+ * Grid Creator.
+ * Creates the game grid, and populates it with empty tiles, then sets up the starting colors and get's two starting blocks.
+ */
 function createGrid() {
   for (let i = 0; i < gameGridSize * gameGridSize; i++) {
     let tile = document.createElement("h2");
@@ -16,6 +20,10 @@ function createGrid() {
   updateTileColor();
 }
 
+/**
+ * Tile Size Setter.
+ * Sets the size of the tiles based on the grid size configured.
+ */
 function setTileSize() {
   let tileSize = 100 / gameGridSize;
 
@@ -25,6 +33,10 @@ function setTileSize() {
   }
 }
 
+/**
+ * Tile Creator.
+ * Creates a numbered tile at a random empty location in the grid.
+ */
 function createTile() {
   let randomNum = Math.floor(Math.random() * tilesList.length);
 
@@ -35,6 +47,10 @@ function createTile() {
   }
 }
 
+/**
+ * Tile Grabber.
+ * Gets the tiles in the grid, and saves them to a multi-dimensional array.
+ */
 function getGameTiles() {
   for (let i = 0; i < gameGridSize * gameGridSize; i++) {
     if (i % gameGridSize === 0) {
@@ -49,6 +65,11 @@ function getGameTiles() {
   }
 }
 
+/**
+ * Horizontal Tile Shifter.
+ * Pushes the tiles in a horizonal direction (left or right).
+ * @param {string} direction - Direction of movement.
+ */
 function gameShiftHorizontal(direction) {
   for (let iR = 0; iR < gameGridSize; iR++) {
     let row = [];
@@ -74,6 +95,11 @@ function gameShiftHorizontal(direction) {
   }
 }
 
+/**
+ * Vertical Tile Shifter.
+ * Pushes the tiles in a vertical direction (up or down).
+ * @param {string} direction - Direction of movement.
+ */
 function gameShiftVertical(direction) {
   for (let iC = 0; iC < gameGridSize; iC++) {
     let column = [];
@@ -99,6 +125,12 @@ function gameShiftVertical(direction) {
   }
 }
 
+/**
+ * Horizontal Movement Check.
+ * Checks if horizontal movement is possible.
+ * @param {string} direction - Direction of movement.
+ * @returns - True if move possible, false if not.
+ */
 function gameShiftHorizontalCheck(direction) {
   for (let iR = 0; iR < gameGridSize; iR++) {
     let row = [];
@@ -125,6 +157,12 @@ function gameShiftHorizontalCheck(direction) {
   return false;
 }
 
+/**
+ * Verical Movement Check.
+ * Checks if vertical movement is possible.
+ * @param {string} direction - Direction of movement.
+ * @returns - True if move possible, false if not.
+ */
 function gameShiftVerticalCheck(direction) {
   for (let iC = 0; iC < gameGridSize; iC++) {
     let column = [];
@@ -151,6 +189,10 @@ function gameShiftVerticalCheck(direction) {
   return false;
 }
 
+/**
+ * Horizontal Tile Combiner.
+ * Combines any matching tiles after a movement.
+ */
 function gameCombineHorrizontal() {
   for (let iR = 0; iR < gameGridSize; iR++) {
     for (let iC = 0; iC < gameGridSize - 1; iC++) {
@@ -162,6 +204,10 @@ function gameCombineHorrizontal() {
   }
 }
 
+/**
+ * Vertical Tile Combiner.
+ * Combines any matching tiles after a movement.
+ */
 function gameCombineVertical() {
   for (let iC = 0; iC < gameGridSize; iC++) {
     for (let iR = 0; iR < gameGridSize - 1; iR++) {
@@ -173,6 +219,11 @@ function gameCombineVertical() {
   }
 }
 
+/**
+ * Game Over Check.
+ * Checks if there are any more possible moves, or if the maximum score has been reached.
+ * @returns - Nothing.
+ */
 function gameOverCheck() {
   if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")) {
     gameGrid.style.display = "none";
@@ -190,6 +241,10 @@ function gameOverCheck() {
   }
 }
 
+/**
+ * Game Results Updater.
+ * Updates the results page with the current and previous game results.
+ */
 function updateGameResults() {
   if (parseInt(gameScore.innerHTML) === gameWinScore) {
     resultsOutcome.innerHTML = "WINNER!";
@@ -203,6 +258,11 @@ function updateGameResults() {
   resultsBestTime.innerHTML = "2";
 }
 
+/**
+ * Horizontal Input Manager.
+ * Starts process for movement in given horizontal direction.
+ * @param {string} direction - Direction of movement.
+ */
 function gameInputHorizontal(direction) {
   if (!game.hidden) {
     if (gameShiftHorizontalCheck(direction)) {
@@ -217,6 +277,11 @@ function gameInputHorizontal(direction) {
   }
 }
 
+/**
+ * Vertical Input Manager.
+ * Starts process for movement in given vertical direction.
+ * @param {string} direction - Direction of movement.
+ */
 function gameInputVertical(direction) {
   if (!game.hidden) {
     if (gameShiftVerticalCheck(direction)) {
@@ -231,6 +296,10 @@ function gameInputVertical(direction) {
   }
 }
 
+/**
+ * Game Resetter.
+ * Resets the game to starting stage.
+ */
 function gameReset() {
   gameGrid.style.display = "flex";
   gameResults.style.display = "none";
@@ -241,6 +310,10 @@ function gameReset() {
   startGame();
 }
 
+/**
+ * Game Score Updater.
+ * Updates the players current score.
+ */
 function updateGameScore() {
   for (let tile of tilesList) {
     if (parseInt(tile.innerHTML) > parseInt(gameScore.innerHTML)) {
@@ -249,6 +322,10 @@ function updateGameScore() {
   }
 }
 
+/**
+ * Tile Color Updater.
+ * Updates the tile colour based on it's value.
+ */
 function updateTileColor() {
   for (let i = 0; i < tilesList.length; i++) {
     let colorIndex = Math.floor(Math.log2(parseInt(tilesList[i].innerHTML) + 1));
@@ -263,6 +340,10 @@ function updateTileColor() {
   }
 }
 
+/**
+ * Game Starter.
+ * Starts the game.
+ */
 function startGame() {
   createGrid();
 }
