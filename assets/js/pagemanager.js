@@ -1,39 +1,27 @@
 /**
- * Cookie Creater.
- * Creates an empty cookie by setting the cookie expiry date.
+ * localStorage Item Setter.
+ * Sets the value of a localStorage item, or creates it.
+ * @param {string} name - Key of localStorage item.
+ * @param {string} value - Value of localStorage item.
  */
-function createCookie() {
-  document.cookie = "expires=Tue, 19 Jan 2038 04:14:07 GMT";
-}
+function setLocalStorage(name, value) {
+  let valueString;
 
-/**
- * Cookier Setter.
- * Sets the value of a cookie, or creates.
- * @param {string} name - Key of the cookie.
- * @param {string} value - Value of the cookie.
- */
-function setCookie(name, value) {
-  document.cookie = name + "=" + value + ";";
-}
-
-/**
- * Cookie Grabber.
- * Gets the value of a cookie from the key supplied.
- * @param {string} name - Key of the cookie.
- * @returns - Value of the cookie.
- */
-function getCookie(name) {
-  let cookies = document.cookie.split(";");
-
-  for (let cookie of cookies) {
-    let cookiePair = cookie.split("=");
-
-    if (cookiePair[0].trim() === name) {
-      return cookiePair[1];
-    }
+  if (value.constructor === Array) {
+    valueString = JSON.stringify(value);
   }
 
-  return "";
+  window.localStorage.setItem(name, value);
+}
+
+/**
+ * localStorage Item Grabber.
+ * Gets the value of a localStorage item.
+ * @param {string} name - Key of localStorage item.
+ * @returns - Value of the localStorage item.
+ */
+function getLocalStorage(name) {
+  return window.localStorage.getItem(name);
 }
 
 /**
@@ -142,17 +130,15 @@ function keyboardInput(e) {
 
 /**
  * Player Fields Updater.
- * Updates the player fields on the splash screen with the values stored in cookies if they exist.
+ * Updates the player fields on the splash screen with the values stored in localStorage if they exist.
  */
 function updatePlayerFields() {
-  if (getCookie("username") !== "") {
-    usernameInput.value = getCookie("username");
-  } else {
-    createCookie();
+  if (getLocalStorage("username") !== "") {
+    usernameInput.value = getLocalStorage("username");
   }
 
-  if (getCookie("cookies") == "agreed") {
-    cookiesInput.checked = true;
+  if (getLocalStorage("localStorage") == "agreed") {
+    localStorageInput.checked = true;
   }
 }
 
@@ -180,14 +166,14 @@ function validatePlayerDetails() {
     return false;
   }
 
-  if (!cookiesInput.checked) {
-    failedValidation("cookies not accepted");
-    cookiesInput.focus();
+  if (!localStorageInput.checked) {
+    failedValidation("localStorage not accepted");
+    localStorageInput.focus();
     return false;
   }
 
-  setCookie("username", usernameInput.value);
-  setCookie("cookies", "agreed");
+  setLocalStorage("username", usernameInput.value);
+  setLocalStorage("localStorage", "agreed");
 
   return true;
 }
@@ -202,8 +188,8 @@ function failedValidation(input) {
     case "username empty":
       errElement.innerText = "Please enter a username!";
       break;
-    case "cookies not accepted":
-      errElement.innerText = "Please confirm usage of cookies!";
+    case "localStorage not accepted":
+      errElement.innerText = "Please confirm usage of localStorage!";
       break;
   }
 }
@@ -214,11 +200,11 @@ function failedValidation(input) {
  */
 function resetPlayerFields() {
   usernameInput.value = "";
-  cookiesInput.checked = false;
+  localStorageInput.checked = false;
   errElement.innerText = "";
 
-  setCookie("username", "");
-  setCookie("cookies", "");
+  setLocalStorage("username", "");
+  setLocalStorage("localStorage", "");
 }
 
 /**
@@ -399,7 +385,7 @@ function initializeScript() {
 // Element declarations
 // Player details inputs, splash screen elements, game screen elements, play & reset buttons.
 const usernameInput = document.getElementById("input-username");
-const cookiesInput = document.getElementById("input-cookies");
+const localStorageInput = document.getElementById("input-localstorage");
 const gameScreenElements = document.getElementsByClassName("game-screen");
 const splashScreen = document.getElementById("splash-screen");
 const errElement = document.getElementById("splash-screen-error");

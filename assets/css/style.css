@@ -75,7 +75,7 @@ header h1 {
   border-radius: 0.5em;
 }
 
-#input-cookies {
+#input-localstorage {
   transform: scale(200%);
   cursor: pointer;
 }
