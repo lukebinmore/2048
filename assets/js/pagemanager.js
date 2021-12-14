@@ -299,6 +299,7 @@ function nextTip() {
   let tipIndex = newTipIndex();
 
   tipElement.innerText = tips[tipIndex];
+  updateTipWidth(tipIndex);
   updateAnimationSpeed(tipIndex);
   restartAnimation();
 }
@@ -317,6 +318,19 @@ function newTipIndex() {
   }
 
   return tipElement.dataset.tipindex;
+}
+
+/**
+ * Tip Width Updater.
+ * Calculates the width of the new tip, and updates the pixel width of the tip element to match.
+ * @param {Integer} tipIndex - Tip index.
+ */
+function updateTipWidth(tipIndex) {
+  let canvas = updateTipWidth.canvas || (updateTipWidth.canvas = document.createElement("canvas"));
+  let context = canvas.getContext("2d");
+  context.font = tipElement.style.fontFamily;
+
+  tipElement.style.width = context.measureText(tips[tipIndex]).width;
 }
 
 /**
