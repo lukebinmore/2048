@@ -177,7 +177,30 @@ function gameOverCheck() {
   if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")){
     gameGrid.style.display = "none";
     gameResults.style.display = "block";
+    updateGameResults();
   }
+
+  for (let tile of tiles) {
+    if (parseInt(tile.innerHTML) === gameWinScore) {
+      gameGrid.style.display = "none";
+      gameResults.style.display = "block";
+      updateGameResults();
+      return;
+    }
+  }
+}
+
+function updateGameResults() {
+  if (parseInt(gameScore.innerHTML) === gameWinScore) {
+    resultsOutcome.innerHTML = "WINNER!";
+  } else {
+    resultsOutcome.innerHTML = "Game Over!";
+  }
+
+  resultsScore.innerHTML = gameScore.innerHTML;
+  resultsBestScore.innerHTML = "2";
+  resultsTime.innerHTML = "2";
+  resultsBestTime.innerHTML = "2";
 }
 
 function gameInputHorizontal(direction) {
@@ -241,8 +264,16 @@ const gameScore = document.getElementById("game-score");
 const gameResults = document.getElementById("game-results");
 let gameTiles = [];
 
+// Results Page elements
+const resultsOutcome = document.getElementById("results-outcome");
+const resultsScore = document.getElementById("results-score");
+const resultsBestScore = document.getElementById("results-best-score");
+const resultsTime = document.getElementById("results-time");
+const resultsBestTime = document.getElementById("results-best-time");
+
 // Game settings
 const gameGridSize = 2;
+const gameWinScore = 8;
 
 // Game variables
 let tiles = [];
