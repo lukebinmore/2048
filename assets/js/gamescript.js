@@ -242,7 +242,7 @@ const gameResults = document.getElementById("game-results");
 let gameTiles = [];
 
 // Game settings
-const gameGridSize = 2;
+const gameGridSize = 4;
 
 // Game variables
 let tiles = [];
