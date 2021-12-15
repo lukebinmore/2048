@@ -339,6 +339,7 @@ function closePage() {
 
   setTileSize();
   getGameTiles();
+  gameTimer("start");
 
   createTile();
   createTile();
@@ -388,6 +389,21 @@ function getGameTiles() {
 
       gameTiles.push(row);
     }
+  }
+}
+
+/**
+ * Game Timer.
+ * Calculates how long the game took to win or loose.
+ * @param {string} state - "start" or "stop" the timer.
+ */
+function gameTimer(state) {
+  if (state === "start") {
+    gameStartTime = new Date().getTime();
+    console.log(gameStartTime);
+  } else {
+    gameTimeTaken = (new Date().getTime() - gameStartTime) / 1000;
+    console.log(gameTimeTaken);
   }
 }
 
@@ -554,6 +570,7 @@ function gameOverCheck() {
   if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")) {
     gameGrid.style.display = "none";
     gameResults.style.display = "block";
+    gameTimer("stop");
     updateGameResults();
   }
 
@@ -561,6 +578,7 @@ function gameOverCheck() {
     if (parseInt(tile.innerHTML) === gameWinScore) {
       gameGrid.style.display = "none";
       gameResults.style.display = "block";
+      gameTimer("stop");
       updateGameResults();
       return;
     }
@@ -651,6 +669,19 @@ function updateTileColor() {
 //#endregion
 
 //#region Game Results Management
+
+/**
+ * Time Converter.
+ * Converts seconds from a number to HH:MM:SS format.
+ * @param {number} seconds - Time in seconds to convert.
+ * @returns - Time in HH:MM:SS format.
+ */
+function convertSecondsToTime(seconds) {
+  let time = new Date(null);
+  time.setSeconds(seconds);
+  return time.toISOString().substr(11, 8);
+}
+
 /**
  * Game Results Updater.
  * Updates the results page with the current and previous game results.
@@ -664,7 +695,7 @@ function updateTileColor() {
 
   resultsScore.innerHTML = gameScore.innerHTML;
   resultsBestScore.innerHTML = "2";
-  resultsTime.innerHTML = "2";
+  resultsTime.innerHTML = convertSecondsToTime(gameTimeTaken);
   resultsBestTime.innerHTML = "2";
 }
 //#endregion
@@ -780,6 +811,8 @@ const gameSection = document.getElementById("game-section");
 const gameGrid = document.getElementById("game-grid");
 const gameGridSize = 2;
 const gameWinScore = 8;
+let gameStartTime;
+let gameTimeTaken;
 let tilesList = [];
 let gameTiles = [];
 const gameColors = [
