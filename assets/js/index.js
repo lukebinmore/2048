@@ -3,7 +3,7 @@
  * Script Initializer.
  * Starts basic operations of script, and runs inistal starting functions.
  */
- function initializeScript() {
+function initializeScript() {
   document.addEventListener("click", clickInput);
   document.addEventListener("keypress", keyboardInput);
   document.addEventListener("keydown", keyboardInput);
@@ -236,7 +236,7 @@ function resetPlayerFields() {
  * Verifies player details, closes the splash screen, opens the game screen and starts features.
  * @param {event} e 
  */
- function openGameScreen(e) {
+function openGameScreen(e) {
   if (!splashScreen.hidden) {
     if (validatePlayerDetails()) {
       closeSplashScreen();
@@ -293,7 +293,7 @@ function setGameSectionSize() {
  * Instructions Opener.
  * Opens the instructions page in the game window.
  */
- function openInstructions() {
+function openInstructions() {
   closePage();
   closePageButton.hidden = false;
   gamePage.hidden = true;
@@ -328,7 +328,7 @@ function closePage() {
  * Game Creator.
  * Creates the game grid, and populates it with empty tiles, then sets up the starting colors and get's two starting blocks.
  */
- function startGame() {
+function startGame() {
   for (let i = 0; i < gameGridSize * gameGridSize; i++) {
     let tile = document.createElement("h2");
 
@@ -570,6 +570,7 @@ function gameOverCheck() {
     gameResults.style.display = "block";
     gameTimer("stop");
     updateGameResults();
+    addScoreToHistory();
   }
 
   for (let tile of tilesList) {
@@ -578,6 +579,7 @@ function gameOverCheck() {
       gameResults.style.display = "block";
       gameTimer("stop");
       updateGameResults();
+      addScoreToHistory();
       return;
     }
   }
@@ -588,7 +590,7 @@ function gameOverCheck() {
  * Starts process for movement in given horizontal direction.
  * @param {string} direction - Direction of movement.
  */
- function gameInputHorizontal(direction) {
+function gameInputHorizontal(direction) {
   if (!gamePage.hidden) {
     if (gameShiftHorizontalCheck(direction)) {
       gameShiftHorizontal(direction)
@@ -683,7 +685,7 @@ function convertSecondsToTime(seconds) {
  * Game Results Updater.
  * Updates the results page with the current and previous game results.
  */
- function updateGameResults() {
+function updateGameResults() {
   if (parseInt(gameScore.innerHTML) === gameWinScore) {
     resultsOutcome.innerHTML = "WINNER!";
   } else {
@@ -694,6 +696,65 @@ function convertSecondsToTime(seconds) {
   resultsBestScore.innerHTML = "2";
   resultsTime.innerHTML = convertSecondsToTime(gameTimeTaken);
   resultsBestTime.innerHTML = "2";
+}
+//#endregion
+
+//#region Score History Management
+/**
+ * Game Number Grabber.
+ * Gets the next number to be used for saved game scores.
+ * @returns - Latest game number + 1.
+ */
+function getGameNum() {
+  let latestGame = 0;
+  for (let i = 0; i < window.localStorage.length; i++) {
+    let key = window.localStorage.key(i);
+    if (key.startsWith("game-")) {
+      let gameNum = parseInt(key.replace("game-", ""));
+      if (gameNum > latestGame) {
+        latestGame = gameNum;
+      }
+    }
+  }
+
+  return latestGame;
+}
+
+/**
+ * Score Adder.
+ * Adds game to score history.
+ */
+function addScoreToHistory() {
+  let key = "game-" + (getGameNum() + 1);
+  let values = [
+    new Date().getTime(), //Date of score
+    gameTimeTaken, //Time Taken
+    gameScore.innerHTML //Game Score
+  ];
+
+  setLocalStorage(key, values);
+}
+
+/**
+ * Score History Grabber.
+ * Gets the score history from localStorage, and puts it in an organised object array. (gameScoreHistory)
+ * Then sorts the array by the newest scores to oldest scores
+ */
+function getScoreHistory() {
+  gameScoreHistory = [];
+  for (let i = 0; i < window.localStorage.length; i++) {
+    let key = window.localStorage.key(i);
+    let values = window.localStorage.getItem(key).split(',');
+
+    if (key.startsWith("game-")) {
+      gameScoreHistory.push({
+        key:key,
+        date:values[0],
+        time:values[1],
+        score:values[2]
+      });
+    }
+  }
 }
 //#endregion
 
@@ -782,10 +843,12 @@ const errElement = document.getElementById("splash-screen-error");
 // Game Screen
 const gameScreenElements = document.getElementsByClassName("game-screen");
 
-// Game Screen - Pages
-const instructionsPage = document.getElementById("instructions-page");
+// Game Screen - Score History
 const historyPage = document.getElementById("history-page");
-const gamePage = document.getElementById("game-page");
+let scoreHistory = [];
+
+// Game Screen - Instructions
+const instructionsPage = document.getElementById("instructions-page");
 
 // Game Screen - Page Buttons
 const instructionsButton = document.getElementById("instructions-button");
@@ -804,6 +867,7 @@ const scoreSection = document.getElementById("score-section");
 const gameScore = document.getElementById("game-score");
 
 // Game Screen - Game Section
+const gamePage = document.getElementById("game-page");
 const gameSection = document.getElementById("game-section");
 const gameGrid = document.getElementById("game-grid");
 const gameGridSize = 2;
