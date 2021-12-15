@@ -692,10 +692,12 @@ function updateGameResults() {
     resultsOutcome.innerHTML = "Game Over!";
   }
 
+  getScoreHistory();
+
   resultsScore.innerHTML = gameScore.innerHTML;
-  resultsBestScore.innerHTML = "2";
+  resultsBestScore.innerHTML = gameScoreHistory[getHighestScore()].score;
   resultsTime.innerHTML = convertSecondsToTime(gameTimeTaken);
-  resultsBestTime.innerHTML = "2";
+  resultsBestTime.innerHTML = convertSecondsToTime(gameScoreHistory[getFastestTime()].time);
 }
 //#endregion
 
@@ -754,6 +756,44 @@ function getScoreHistory() {
       };
     }
   }
+}
+
+/**
+ * Highest Score Grabber.
+ * Finds the highest score obtained, and returns the key for that recorded score.
+ * @returns - Key for highest score recorded.
+ */
+ function getHighestScore() {
+  let highestScoreValue = 2;
+  let highestScoreKey;
+
+  for (let key in gameScoreHistory) {
+    if (gameScoreHistory[key].score > highestScoreValue) {
+      highestScoreValue = gameScoreHistory[key].score;
+      highestScoreKey = key;
+    }
+  }
+
+  return highestScoreKey;
+}
+
+/**
+ * Fastest Time Grabber.
+ * Finds the fastest time obtained, and returns the key for that recorded time.
+ * @returns - Key for fastest time recorded.
+ */
+function getFastestTime() {
+  let fastestTimeValue = gameScoreHistory["game-1"].time;
+  let fastestTimeKey;
+
+  for (let key in gameScoreHistory) {
+    if (gameScoreHistory[key].time < fastestTimeValue) {
+      fastestTimeValue = gameScoreHistory[key].time;
+      fastestTimeKey = key;
+    }
+  }
+
+  return fastestTimeKey;
 }
 //#endregion
 
