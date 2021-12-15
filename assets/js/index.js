@@ -400,10 +400,8 @@ function getGameTiles() {
 function gameTimer(state) {
   if (state === "start") {
     gameStartTime = new Date().getTime();
-    console.log(gameStartTime);
   } else {
     gameTimeTaken = (new Date().getTime() - gameStartTime) / 1000;
-    console.log(gameTimeTaken);
   }
 }
 
@@ -669,7 +667,6 @@ function updateTileColor() {
 //#endregion
 
 //#region Game Results Management
-
 /**
  * Time Converter.
  * Converts seconds from a number to HH:MM:SS format.
