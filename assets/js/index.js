@@ -747,12 +747,11 @@ function getScoreHistory() {
     let values = window.localStorage.getItem(key).split(',');
 
     if (key.startsWith("game-")) {
-      gameScoreHistory.push({
-        key:key,
+      gameScoreHistory[key] = {
         date:values[0],
         time:values[1],
         score:values[2]
-      });
+      };
     }
   }
 }
