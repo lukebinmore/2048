@@ -569,8 +569,8 @@ function gameOverCheck() {
     gameGrid.style.display = "none";
     gameResults.style.display = "block";
     gameTimer("stop");
-    updateGameResults();
     addScoreToHistory();
+    updateGameResults();
   }
 
   for (let tile of tilesList) {
@@ -578,8 +578,8 @@ function gameOverCheck() {
       gameGrid.style.display = "none";
       gameResults.style.display = "block";
       gameTimer("stop");
-      updateGameResults();
       addScoreToHistory();
+      updateGameResults();
       return;
     }
   }
@@ -764,12 +764,10 @@ function getScoreHistory() {
  * @returns - Key for highest score recorded.
  */
  function getHighestScore() {
-  let highestScoreValue = 2;
-  let highestScoreKey;
+  let highestScoreKey = "game-1";
 
   for (let key in gameScoreHistory) {
-    if (gameScoreHistory[key].score > highestScoreValue) {
-      highestScoreValue = gameScoreHistory[key].score;
+    if (gameScoreHistory[key].score > gameScoreHistory[highestScoreKey].score) {
       highestScoreKey = key;
     }
   }
@@ -783,12 +781,10 @@ function getScoreHistory() {
  * @returns - Key for fastest time recorded.
  */
 function getFastestTime() {
-  let fastestTimeValue = gameScoreHistory["game-1"].time;
-  let fastestTimeKey;
+  let fastestTimeKey = "game-1";
 
   for (let key in gameScoreHistory) {
-    if (gameScoreHistory[key].time < fastestTimeValue) {
-      fastestTimeValue = gameScoreHistory[key].time;
+    if (gameScoreHistory[key].time < gameScoreHistory[fastestTimeKey].time) {
       fastestTimeKey = key;
     }
   }
