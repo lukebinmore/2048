@@ -835,9 +835,11 @@ function newTipIndex() {
 function updateTipWidth(tipIndex) {
   let canvas = updateTipWidth.canvas || (updateTipWidth.canvas = document.createElement("canvas"));
   let context = canvas.getContext("2d");
-  context.font = tipElement.style.fontFamily;
+  let fontSize = window.getComputedStyle(tipElement, null).getPropertyValue("font-size");
+  let fontFamily = window.getComputedStyle(tipElement, null).getPropertyValue("font-family")
+  context.font = fontSize + " " + fontFamily;
 
-  tipElement.style.width = context.measureText(tips[tipIndex]).width;
+  tipElement.style.width = context.measureText(tips[tipIndex]).width + "px";
 }
 
 /**
