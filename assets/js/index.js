@@ -566,22 +566,25 @@ function gameCombineVertical() {
  * @returns - Nothing.
  */
 function gameOverCheck() {
-  if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")) {
-    gameGrid.style.display = "none";
-    gameResults.style.display = "block";
-    gameTimer("stop");
-    addScoreToHistory();
-    updateGameResults();
-  }
-
-  for (let tile of tilesList) {
-    if (parseInt(tile.innerHTML) === gameWinScore) {
+  if (gameResults.style.display !== "block") {
+    if (!gameShiftHorizontalCheck("left") && !gameShiftHorizontalCheck("right") && !gameShiftVerticalCheck("up") && !gameShiftVerticalCheck("down")) {
       gameGrid.style.display = "none";
       gameResults.style.display = "block";
       gameTimer("stop");
       addScoreToHistory();
       updateGameResults();
-      return;
+    }
+
+
+    for (let tile of tilesList) {
+      if (parseInt(tile.innerHTML) === gameWinScore) {
+        gameGrid.style.display = "none";
+        gameResults.style.display = "block";
+        gameTimer("stop");
+        addScoreToHistory();
+        updateGameResults();
+        return;
+      }
     }
   }
 }
