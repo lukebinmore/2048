@@ -306,6 +306,7 @@ function openInstructions() {
  */
 function openHistory() {
   closePage();
+  updateHistoryPage();
   closePageButton.hidden = false;
   gamePage.hidden = true;
   historyPage.hidden = false;
@@ -729,7 +730,7 @@ function getGameNum() {
 function addScoreToHistory() {
   let key = "game-" + (getGameNum() + 1);
   let values = [
-    new Date().getTime(), //Date of score
+    new Date(), //Date of score
     gameTimeTaken, //Time Taken
     gameScore.innerHTML //Game Score
   ];
@@ -790,6 +791,57 @@ function getFastestTime() {
   }
 
   return fastestTimeKey;
+}
+
+/**
+ * Game History Page Updater.
+ * Runs process for updating History page. Including running all functions to pull specific scores from history, and display them.
+ */
+function updateHistoryPage() {
+  let newestScore = null;
+  let bestScore = "game-1";
+
+  getScoreHistory();
+
+  displayAllScores();
+}
+
+/**
+ * Date String Builder.
+ * Creates a date and time string in DD/MM/YYYY - HH:MM:SS format from the date passed to it.
+ * @param {date} date - Date to create string for.
+ * @returns - String of date in DD/MM/YYYY - HH:MM:SS format.
+ */
+function getDateString(date) {
+  date = new Date(date);
+
+  let dd = String(date.getDate()).padStart(2, '0');
+  let mm = String(date.getMonth() + 1).padStart(2, '0');
+  let yyyy = date.getFullYear();
+  let time = date.toISOString().substr(11, 8);
+
+  let dateString = [dd, mm, yyyy].join('/') + ' - ' + time; 
+
+  return dateString;
+}
+
+function displayAllScores() {
+  for (let key in gameScoreHistory) {
+    let nextScore = document.createElement("div");
+
+    date = getDateString(gameScoreHistory[key].date);
+    time = convertSecondsToTime(gameScoreHistory[key].time);
+    score = gameScoreHistory[key].score;
+    
+    nextScore.innerHTML = (
+      `<p>Date:</p>` +
+      `<p>${date}</p>` +
+      `<p>Time Taken: ${time}</p>` +
+      `<p>Score: ${score}</p>`
+    );
+
+    scoreHistoryAll.appendChild(nextScore);    
+  }
 }
 //#endregion
 
@@ -882,6 +934,9 @@ const gameScreenElements = document.getElementsByClassName("game-screen");
 
 // Game Screen - Score History
 const historyPage = document.getElementById("history-page");
+const scoreHistoryNewset = document.getElementById("score-history-newset");
+const scoreHistoryBest = document.getElementById("score-history-best");
+const scoreHistoryAll = document.getElementById("score-history-all");
 let scoreHistory = [];
 
 // Game Screen - Instructions
