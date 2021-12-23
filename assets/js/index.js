@@ -751,9 +751,9 @@ function getScoreHistory() {
 
     if (key.startsWith("game-")) {
       gameScoreHistory[key] = {
-        date:values[0],
-        time:values[1],
-        score:values[2]
+        date: values[0],
+        time: values[1],
+        score: values[2]
       };
     }
   }
@@ -764,7 +764,7 @@ function getScoreHistory() {
  * Finds the highest score obtained, and returns the key for that recorded score.
  * @returns - Key for highest score recorded.
  */
- function getHighestScore() {
+function getHighestScore() {
   let highestScoreKey = "game-1";
 
   for (let key in gameScoreHistory) {
@@ -803,6 +803,7 @@ function updateHistoryPage() {
 
   getScoreHistory();
 
+  displayBestScore();
   displayAllScores();
 }
 
@@ -820,27 +821,65 @@ function getDateString(date) {
   let yyyy = date.getFullYear();
   let time = date.toISOString().substr(11, 8);
 
-  let dateString = [dd, mm, yyyy].join('/') + ' - ' + time; 
+  let dateString = [dd, mm, yyyy].join('/') + ' - ' + time;
 
   return dateString;
 }
 
+/**
+ * Score Display Formatter.
+ * Creates a string of HTML to display a score on the score history page properly.
+ * @param {string} key - The key of the score to be formatted.
+ * @returns - The formatted HTML string.
+ */
+function getDisplayScoreHTML(key) {
+  let date = getDateString(gameScoreHistory[key].date);
+  let time = convertSecondsToTime(gameScoreHistory[key].time);
+  let score = gameScoreHistory[key].score;
+  let html = (
+    `<p>Date:</p>` +
+    `<p>${date}</p>` +
+    `<p>Time Taken: ${time}</p>` +
+    `<p>Score: ${score}</p>`
+  );
+
+  return html;
+}
+
+/**
+ * Best Score Displayer.
+ * Grabs and displays the best score on the score history screen, based on the highest score and the fastest time.
+ */
+function displayBestScore() {
+  let best = "game-1";
+
+  scoreHistoryBest.innerHTML = "";
+
+  for (let key in gameScoreHistory) {
+    if (parseInt(gameScoreHistory[key].score) >= parseInt(gameScoreHistory[best].score)) {
+      if (parseInt(gameScoreHistory[key].time) <= parseInt(gameScoreHistory[best].time)) {
+        best = key;
+      }
+    }
+  }
+
+  let bestScore = document.createElement("div");
+  bestScore.innerHTML = getDisplayScoreHTML(best);
+  scoreHistoryBest.appendChild(bestScore);
+}
+
+/**
+ * All Score Displayer.
+ * Adds all past scores to the score history page.
+ */
 function displayAllScores() {
+  scoreHistoryAll.innerHTML = "";
+
   for (let key in gameScoreHistory) {
     let nextScore = document.createElement("div");
 
-    date = getDateString(gameScoreHistory[key].date);
-    time = convertSecondsToTime(gameScoreHistory[key].time);
-    score = gameScoreHistory[key].score;
-    
-    nextScore.innerHTML = (
-      `<p>Date:</p>` +
-      `<p>${date}</p>` +
-      `<p>Time Taken: ${time}</p>` +
-      `<p>Score: ${score}</p>`
-    );
-
-    scoreHistoryAll.appendChild(nextScore);    
+    nextScore.innerHTML = getDisplayScoreHTML(key)
+    scoreHistoryAll.appendChild(nextScore);
   }
 }
 //#endregion
@@ -937,7 +976,7 @@ const historyPage = document.getElementById("history-page");
 const scoreHistoryNewset = document.getElementById("score-history-newset");
 const scoreHistoryBest = document.getElementById("score-history-best");
 const scoreHistoryAll = document.getElementById("score-history-all");
-let scoreHistory = [];
+let gameScoreHistory = [];
 
 // Game Screen - Instructions
 const instructionsPage = document.getElementById("instructions-page");
