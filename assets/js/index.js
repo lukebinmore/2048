@@ -806,6 +806,7 @@ function updateHistoryPage() {
 
   getScoreHistory();
 
+  displayNewestScore();
   displayBestScore();
   displayAllScores();
 }
@@ -835,7 +836,7 @@ function getDateString(date) {
  * @param {string} key - The key of the score to be formatted.
  * @returns - The formatted HTML string.
  */
-function getDisplayScoreHTML(key) {
+function getScoreHTML(key) {
   let date = getDateString(gameScoreHistory[key].date);
   let time = convertSecondsToTime(gameScoreHistory[key].time);
   let score = gameScoreHistory[key].score;
@@ -847,6 +848,25 @@ function getDisplayScoreHTML(key) {
   );
 
   return html;
+}
+
+/**
+ * Newest Score Displayer.
+ * Grabs and displays the newest score on the score histry screen, based on the score's key name.
+ */
+function displayNewestScore() {
+  let newest = "game-1";
+  scoreHistoryNewest.innerHTML = "";
+
+  for (let key in gameScoreHistory) {
+    if (parseInt(key.replace("game-", "")) >= parseInt(newest.replace("game-", ""))) {
+      newest = key;
+    }
+  }
+
+  let newestScore = document.createElement("div");
+  newestScore.innerHTML = getScoreHTML(newest);
+  scoreHistoryNewest.appendChild(newestScore);
 }
 
 /**
@@ -867,7 +887,7 @@ function displayBestScore() {
   }
 
   let bestScore = document.createElement("div");
-  bestScore.innerHTML = getDisplayScoreHTML(best);
+  bestScore.innerHTML = getScoreHTML(best);
   scoreHistoryBest.appendChild(bestScore);
 }
 
@@ -881,7 +901,7 @@ function displayAllScores() {
   for (let key in gameScoreHistory) {
     let nextScore = document.createElement("div");
 
-    nextScore.innerHTML = getDisplayScoreHTML(key)
+    nextScore.innerHTML = getScoreHTML(key)
     scoreHistoryAll.appendChild(nextScore);
   }
 }
@@ -976,7 +996,7 @@ const gameScreenElements = document.getElementsByClassName("game-screen");
 
 // Game Screen - Score History
 const historyPage = document.getElementById("history-page");
-const scoreHistoryNewset = document.getElementById("score-history-newset");
+const scoreHistoryNewest = document.getElementById("score-history-newest");
 const scoreHistoryBest = document.getElementById("score-history-best");
 const scoreHistoryAll = document.getElementById("score-history-all");
 let gameScoreHistory = [];
@@ -1004,8 +1024,8 @@ const gameScore = document.getElementById("game-score");
 const gamePage = document.getElementById("game-page");
 const gameSection = document.getElementById("game-section");
 const gameGrid = document.getElementById("game-grid");
-const gameGridSize = 2;
-const gameWinScore = 8;
+const gameGridSize = 4;
+const gameWinScore = 16;
 let gameStartTime;
 let gameTimeTaken;
 let tilesList = [];
