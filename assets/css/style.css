@@ -183,23 +183,29 @@ header h1 {
   width: 100%;
   height: 100%;
   overflow-y: auto;
-}
-
-#instructions-page {
   color: #fff;
   padding: 0 1vw;
   box-sizing: border-box;
   font-family: Bubbles;
 }
 
-#instructions-page h3 {
+.game-section-pages h3 {
   border-top: 0.25em solid #fff;
   padding-top: 1vmin;
   margin-top: 1vmin;
 }
 
-#history-page {
-  background-color: blue;
+#score-history-all div {
+  border: 0.05em solid #fff;
+  border-radius: 0.5em;
+  margin: 0.2em 0;
+  padding: 0.1em;
+}
+
+#game-page {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
 }
 
 #game-grid {
