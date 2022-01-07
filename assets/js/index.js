@@ -747,18 +747,28 @@ function addScoreToHistory() {
  * Then sorts the array by the newest scores to oldest scores
  */
 function getScoreHistory() {
+  let unorderedScores = [];
+  let keyNums = [];
+
   gameScoreHistory = [];
   for (let i = 0; i < window.localStorage.length; i++) {
     let key = window.localStorage.key(i);
     let values = window.localStorage.getItem(key).split(',');
 
     if (key.startsWith("game-")) {
-      gameScoreHistory[key] = {
+      keyNums.push(parseInt(key.replace("game-", "")));
+      unorderedScores[key] = {
         date: values[0],
         time: parseInt(values[1]),
         score: parseInt(values[2])
       };
     }
+  }
+
+  keyNums.sort(function (a, b) { return a - b });
+
+  for (let key of keyNums) {
+    gameScoreHistory["game-" + key] = unorderedScores["game-" + key];
   }
 }
 
