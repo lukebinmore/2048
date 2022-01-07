@@ -905,14 +905,36 @@ function displayGoogleChart() {
     chartData.push([index.replace("game-", ""), gameScoreHistory[index].score]);
   }
 
+  if (chartData.length > 11) {
+    chartData.splice(1, chartData.length - 11);
+  }
+
   google.charts.load('current', { 'packages': ['corechart'] });
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable(chartData);
-
-    var chart = new google.visualization.AreaChart(document.getElementById('score-history-chart'));
-    chart.draw(data);
+    var options = {
+      legend: 'none',
+      backgroundColor: '#000',
+      theme: 'maximized',
+      chartArea: {
+        width: '95%'
+      },
+      hAxis: {
+        viewWindow: false,
+        textStyle: {
+          color: '#fff'
+        }
+      },
+      vAxis: {
+        textStyle: {
+          color: '#fff'
+        }
+      }
+    }
+    var chart = new google.visualization.LineChart(document.getElementById('score-history-chart'));
+    chart.draw(data, options);
   }
 }
 
