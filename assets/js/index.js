@@ -755,8 +755,8 @@ function getScoreHistory() {
     if (key.startsWith("game-")) {
       gameScoreHistory[key] = {
         date: values[0],
-        time: values[1],
-        score: values[2]
+        time: parseInt(values[1]),
+        score: parseInt(values[2])
       };
     }
   }
@@ -880,8 +880,8 @@ function displayBestScore() {
   scoreHistoryBest.innerHTML = "";
 
   for (let key in gameScoreHistory) {
-    if (parseInt(gameScoreHistory[key].score) >= parseInt(gameScoreHistory[best].score)) {
-      if (parseInt(gameScoreHistory[key].time) <= parseInt(gameScoreHistory[best].time)) {
+    if (gameScoreHistory[key].score >= gameScoreHistory[best].score) {
+      if (gameScoreHistory[key].time <= gameScoreHistory[best].time) {
         best = key;
       }
     }
@@ -897,12 +897,12 @@ function displayBestScore() {
  * Creates and draws a google area chart with the relevant data from the current players score history.
  */
 function displayGoogleChart() {
-  let chartData = [["Game", "Score", "Time"]];
+  let chartData = [["Game", "Score"]];
 
   getScoreHistory();
 
   for (let index in gameScoreHistory) {
-    chartData.push([index.replace("game-", ""), parseInt(gameScoreHistory[index].score), parseInt(gameScoreHistory[index].time)]);
+    chartData.push([index.replace("game-", ""), gameScoreHistory[index].score]);
   }
 
   google.charts.load('current', { 'packages': ['corechart'] });
@@ -1097,5 +1097,3 @@ let tips = [
 //#endregion
 
 document.addEventListener("DOMContentLoaded", initializeScript);
-
-
