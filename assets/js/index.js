@@ -808,6 +808,7 @@ function updateHistoryPage() {
 
   displayNewestScore();
   displayBestScore();
+  displayGoogleChart();
   displayAllScores();
 }
 
@@ -889,6 +890,30 @@ function displayBestScore() {
   let bestScore = document.createElement("div");
   bestScore.innerHTML = getScoreHTML(best);
   scoreHistoryBest.appendChild(bestScore);
+}
+
+/**
+ * Google Chart Displayer.
+ * Creates and draws a google area chart with the relevant data from the current players score history.
+ */
+function displayGoogleChart() {
+  let chartData = [["Game", "Score", "Time"]];
+
+  getScoreHistory();
+
+  for (let index in gameScoreHistory) {
+    chartData.push([index.replace("game-", ""), parseInt(gameScoreHistory[index].score), parseInt(gameScoreHistory[index].time)]);
+  }
+
+  google.charts.load('current', { 'packages': ['corechart'] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(chartData);
+
+    var chart = new google.visualization.AreaChart(document.getElementById('score-history-chart'));
+    chart.draw(data);
+  }
 }
 
 /**
@@ -1072,3 +1097,5 @@ let tips = [
 //#endregion
 
 document.addEventListener("DOMContentLoaded", initializeScript);
+
+
