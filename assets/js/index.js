@@ -680,9 +680,17 @@ function updateTileColor() {
  * @returns - Time in HH:MM:SS format.
  */
 function convertSecondsToTime(seconds) {
-  let time = new Date(null);
-  time.setSeconds(seconds);
-  return time.toISOString().substr(11, 8);
+  let hh = Math.floor(seconds / 3600);
+  let mm = Math.floor((seconds - (hh * 3600)) / 60);
+  let ss = seconds - (hh * 3600) - (mm * 60);
+
+  if (hh < 10) {hh = "0" + hh};
+  if (mm < 10) {mm = "0" + mm};
+  if (ss < 10) {ss = "0" + ss};
+ 
+  let time = [hh, mm, ss].join(':');
+
+  return time;
 }
 
 /**
@@ -834,7 +842,7 @@ function getDateString(date) {
   let dd = String(date.getDate()).padStart(2, '0');
   let mm = String(date.getMonth() + 1).padStart(2, '0');
   let yyyy = date.getFullYear();
-  let time = date.toISOString().substr(11, 8);
+  let time = date.toLocaleTimeString('en-us', {hour12: false});
 
   let dateString = [dd, mm, yyyy].join('/') + ' - ' + time;
 
@@ -891,8 +899,6 @@ function displayBestScore() {
   scoreHistoryBest.innerHTML = "";
 
   for (let key in gameScoreHistory) {
-    console.log(key);
-
     if (gameScoreHistory[key].score > gameScoreHistory[best].score) {
       best = key;
     }
