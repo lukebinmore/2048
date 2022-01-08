@@ -852,10 +852,11 @@ function getScoreHTML(key) {
   let time = convertSecondsToTime(gameScoreHistory[key].time);
   let score = gameScoreHistory[key].score;
   let html = (
-    `<p>Date:</p>` +
-    `<p>${date}</p>` +
+    `<p>${key.replace("game-", "Game: ")}</p>` + 
+    `<p>Score: ${score}</p>` +
     `<p>Time Taken: ${time}</p>` +
-    `<p>Score: ${score}</p>`
+    `<p>Date:</p>` +
+    `<p>${date}</p>`
   );
 
   return html;
@@ -965,7 +966,7 @@ function displayAllScores() {
     let nextScore = document.createElement("div");
 
     nextScore.innerHTML = getScoreHTML(key)
-    scoreHistoryAll.appendChild(nextScore);
+    scoreHistoryAll.prepend(nextScore);
   }
 }
 //#endregion
