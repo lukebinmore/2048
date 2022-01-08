@@ -890,6 +890,12 @@ function displayBestScore() {
   scoreHistoryBest.innerHTML = "";
 
   for (let key in gameScoreHistory) {
+    console.log(key);
+
+    if (gameScoreHistory[key].score > gameScoreHistory[best].score) {
+      best = key;
+    }
+
     if (gameScoreHistory[key].score >= gameScoreHistory[best].score) {
       if (gameScoreHistory[key].time <= gameScoreHistory[best].time) {
         best = key;
@@ -1082,7 +1088,7 @@ const gamePage = document.getElementById("game-page");
 const gameSection = document.getElementById("game-section");
 const gameGrid = document.getElementById("game-grid");
 const gameGridSize = 4;
-const gameWinScore = 16;
+const gameWinScore = 64;
 let gameStartTime;
 let gameTimeTaken;
 let tilesList = [];
