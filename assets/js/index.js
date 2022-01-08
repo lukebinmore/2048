@@ -340,7 +340,6 @@ function startGame() {
 
   setTileSize();
   getGameTiles();
-  gameTimer("start");
 
   createTile();
   createTile();
@@ -399,7 +398,7 @@ function getGameTiles() {
  * @param {string} state - "start" or "stop" the timer.
  */
 function gameTimer(state) {
-  if (state === "start") {
+  if (state === "start" && gameStartTime === undefined) {
     gameStartTime = new Date().getTime();
   } else {
     gameTimeTaken = (new Date().getTime() - gameStartTime) / 1000;
@@ -632,6 +631,7 @@ function gameOverCheck() {
  */
 function gameInputHorizontal(direction) {
   if (!gamePage.hidden) {
+    gameTimer("start");
     if (gameShiftHorizontalCheck(direction)) {
       gameShiftHorizontal(direction)
       gameCombineHorrizontal(direction);
@@ -651,6 +651,7 @@ function gameInputHorizontal(direction) {
  */
 function gameInputVertical(direction) {
   if (!gamePage.hidden) {
+    gameTimer("start");
     if (gameShiftVerticalCheck(direction)) {
       gameShiftVertical(direction)
       gameCombineVertical(direction);
@@ -672,6 +673,7 @@ function gameReset() {
   gameResults.style.display = "none";
   gameScore.innerHTML = "2";
   gameGrid.innerHTML = "";
+  gameStartTime = undefined;
   tilesList = [];
   gameTiles = [];
   startGame();
