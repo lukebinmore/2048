@@ -1133,7 +1133,7 @@ const gamePage = document.getElementById("game-page");
 const gameSection = document.getElementById("game-section");
 const gameGrid = document.getElementById("game-grid");
 const gameGridSize = 4;
-const gameWinScore = 64;
+const gameWinScore = 2048;
 let gameStartTime;
 let gameTimeTaken;
 let tilesList = [];
