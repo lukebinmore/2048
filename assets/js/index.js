@@ -534,13 +534,31 @@ function gameShiftVerticalCheck(direction) {
  * Horizontal Tile Combiner.
  * Combines any matching tiles after a movement.
  */
-function gameCombineHorrizontal() {
+function gameCombineHorrizontal(direction) {
   for (let iR = 0; iR < gameGridSize; iR++) {
+    let row = [];
+
+    for (let iC = 0; iC < gameGridSize; iC++) {
+      row.push(parseInt(gameTiles[iR][iC].innerHTML));
+    }
+
+    if (direction === "right") {
+      row.reverse();
+    }
+
     for (let iC = 0; iC < gameGridSize - 1; iC++) {
-      if (gameTiles[iR][iC].innerHTML === gameTiles[iR][iC + 1].innerHTML) {
-        gameTiles[iR][iC].innerHTML = parseInt(gameTiles[iR][iC].innerHTML * 2);
-        gameTiles[iR][iC + 1].innerHTML = 0;
+      if (row[iC] === row[iC + 1]) {
+        row[iC] = row[iC] * 2;
+        row[iC + 1] = 0;
       }
+    }
+
+    if (direction === "right") {
+      row.reverse();
+    }    
+
+    for (let iC = 0; iC < gameGridSize; iC++) {
+      gameTiles[iR][iC].innerHTML = row[iC];
     }
   }
 }
@@ -549,13 +567,31 @@ function gameCombineHorrizontal() {
  * Vertical Tile Combiner.
  * Combines any matching tiles after a movement.
  */
-function gameCombineVertical() {
+function gameCombineVertical(direction) {
   for (let iC = 0; iC < gameGridSize; iC++) {
+    let column = [];
+
+    for (let iR = 0; iR < gameGridSize; iR++) {
+      column.push(parseInt(gameTiles[iR][iC].innerHTML));
+    }
+
+    if (direction === "down") {
+      column.reverse();
+    }
+    
     for (let iR = 0; iR < gameGridSize - 1; iR++) {
-      if (gameTiles[iR][iC].innerHTML === gameTiles[iR + 1][iC].innerHTML) {
-        gameTiles[iR][iC].innerHTML = parseInt(gameTiles[iR][iC].innerHTML * 2);
-        gameTiles[iR + 1][iC].innerHTML = 0;
+      if (column[iR] === column[iR + 1]) {
+        column[iR] *= 2;
+        column[iR + 1] = 0;
       }
+    }
+
+    if (direction === "down") {
+      column.reverse();
+    }
+
+    for (let iR = 0; iR < gameGridSize; iR++) {
+      gameTiles[iR][iC].innerHTML = column[iR];
     }
   }
 }
@@ -598,7 +634,7 @@ function gameInputHorizontal(direction) {
   if (!gamePage.hidden) {
     if (gameShiftHorizontalCheck(direction)) {
       gameShiftHorizontal(direction)
-      gameCombineHorrizontal();
+      gameCombineHorrizontal(direction);
       gameShiftHorizontal(direction);
       createTile();
     }
@@ -617,7 +653,7 @@ function gameInputVertical(direction) {
   if (!gamePage.hidden) {
     if (gameShiftVerticalCheck(direction)) {
       gameShiftVertical(direction)
-      gameCombineVertical();
+      gameCombineVertical(direction);
       gameShiftVertical(direction);
       createTile();
     }
