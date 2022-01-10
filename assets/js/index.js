@@ -115,7 +115,11 @@ function clickInput(e) {
 function keyboardInput(e) {
   switch (e.key) {
     case "Enter":
-      openGameScreen();
+      if (!splashScreen.hidden) {
+        openGameScreen();
+      } else if (gameResults.style.display === "block") {
+        gameReset();
+      }
       break;
     case 'a':
       gameInputHorizontal("left");
@@ -237,13 +241,11 @@ function resetPlayerFields() {
  * @param {event} e 
  */
 function openGameScreen(e) {
-  if (!splashScreen.hidden) {
-    if (validatePlayerDetails()) {
-      closeSplashScreen();
-      setGameSectionSize();
-      nextTip();
-      startGame();
-    }
+  if (validatePlayerDetails()) {
+    closeSplashScreen();
+    setGameSectionSize();
+    nextTip();
+    startGame();
   }
 }
 
@@ -554,7 +556,7 @@ function gameCombineHorrizontal(direction) {
 
     if (direction === "right") {
       row.reverse();
-    }    
+    }
 
     for (let iC = 0; iC < gameGridSize; iC++) {
       gameTiles[iR][iC].innerHTML = row[iC];
@@ -577,7 +579,7 @@ function gameCombineVertical(direction) {
     if (direction === "down") {
       column.reverse();
     }
-    
+
     for (let iR = 0; iR < gameGridSize - 1; iR++) {
       if (column[iR] === column[iR + 1]) {
         column[iR] *= 2;
@@ -722,10 +724,10 @@ function convertSecondsToTime(seconds) {
   let mm = Math.floor((seconds - (hh * 3600)) / 60);
   let ss = Math.floor((seconds - (hh * 3600) - (mm * 60)));
 
-  if (hh < 10) {hh = "0" + hh};
-  if (mm < 10) {mm = "0" + mm};
-  if (ss < 10) {ss = "0" + ss};
- 
+  if (hh < 10) { hh = "0" + hh };
+  if (mm < 10) { mm = "0" + mm };
+  if (ss < 10) { ss = "0" + ss };
+
   let time = [hh, mm, ss].join(':');
 
   return time;
@@ -880,7 +882,7 @@ function getDateString(date) {
   let dd = String(date.getDate()).padStart(2, '0');
   let mm = String(date.getMonth() + 1).padStart(2, '0');
   let yyyy = date.getFullYear();
-  let time = date.toLocaleTimeString('en-us', {hour12: false});
+  let time = date.toLocaleTimeString('en-us', { hour12: false });
 
   let dateString = [dd, mm, yyyy].join('/') + ' - ' + time;
 
@@ -898,7 +900,7 @@ function getScoreHTML(key) {
   let time = convertSecondsToTime(gameScoreHistory[key].time);
   let score = gameScoreHistory[key].score;
   let html = (
-    `<p>${key.replace("game-", "Game: ")}</p>` + 
+    `<p>${key.replace("game-", "Game: ")}</p>` +
     `<p>Score: ${score}</p>` +
     `<p>Time Taken: ${time}</p>` +
     `<p>Date:</p>` +
