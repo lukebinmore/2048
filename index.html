@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Site description, keywords and favicon -->
   <meta name="description" content="2048 strategy game, designed for desktop and mobile">
   <meta name="keywords" content="2048, game, strategy, desktop, mobile, play">
   <link rel="shortcut icon" href="assets/images/2048-favicon.ico" type="image/x-icon">
@@ -12,46 +14,64 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="assets/css/style.css">
 
+  <!-- Site title -->
   <title>2048</title>
 </head>
 
 <body>
+  <!-- Site header - containes logo's and site title -->
   <header>
     <img src="assets/images/2048-logo.png" alt="2048 logo">
     <h1>2048!</h1>
     <img src="assets/images/2048-logo.png" alt="2048 logo">
   </header>
 
+  <!-- Splash screen section - Contains content for initial splash screen -->
   <section id="splash-screen">
+    <!-- Heading -->
     <h1>
       Welcome!
     </h1>
+
+    <!-- Error label -->
     <label id="splash-screen-error" class="splash-screen-label"></label>
+
+    <!-- Username label and input -->
     <label class="splash-screen-label" for="input-username">Enter your chosen name:</label>
     <input type="text" id="input-username" name="input-username" maxlength=15>
+
+    <!-- LocalStorage label and input -->
     <label class="splash-screen-label" for="input-localstorage">
       Check to agree to the use of localStorage for storing scoring and username data.*
     </label>
     <input type="checkbox" name="input-localstorage" id="input-localstorage">
+
+    <!-- Play button -->
     <h2 id="splash-screen-play">
       Play Now!!!
     </h2>
     <p id="splash-screen-reset">Reset</p>
   </section>
 
+  <!-- Menu button section - contains menu buttons for instructions and the score history page -->
   <section id="menu-button-section" class="game-screen" hidden>
     <h2 id="instructions-button" data-state="closed">Instructions <i class="fas fa-info-circle"></i></h2>
     <h2 id="history-button" data-state="closed"><i class="fas fa-history"></i> Score History</h2>
   </section>
 
+  <!-- Score section - contains the current game score -->
   <section id="score-section" class="game-screen" hidden>
     <h2>Current Score: <span id="game-score">2</span></h2>
   </section>
 
+  <!-- Game section - contains the main window for the game, instructions and score history pages -->
   <section id="game-section" class="game-screen" hidden>
+    <!-- Close page button - Closes the instructions and score history pages -->
     <div id="close-page-button" hidden>
       <i class="fas fa-times-circle"></i>
     </div>
+
+    <!-- Instructions page -->
     <div id="instructions-page" class="game-section-pages" hidden>
       <h2>Instructions!</h2>
       <h3>Aim Of The Game!</h3>
@@ -73,19 +93,34 @@
       <br>
       <p>Restarting The Game: Click on the "Play Again" button on the reset screen, or press the "ENTER" key.</p>
     </div>
+
+    <!-- Score history page -->
     <div id="history-page" class="game-section-pages" hidden>
       <h2>Score History!</h2>
+
+      <!-- Newest score -->
       <h3>Newest Score!</h3>
       <div id="score-history-newest"></div>
+
+      <!-- Best score -->
       <h3>Best Score!</h3>
       <div id="score-history-best"></div>
+
+      <!-- Score chart -->
       <h3>Score Chart</h3>
       <div id="score-history-chart"></div>
+
+      <!-- All scores -->
       <h3>All Scores!</h3>
       <div id="score-history-all"></div>
     </div>
+
+    <!-- Game page -->
     <div id="game-page">
+      <!-- Game grid -->
       <div id="game-grid"></div>
+
+      <!-- Game results page -->
       <div id="game-results">
         <h2 id="results-outcome">WINNER!</h2>
         <h3>Your Score: <span id="results-score"></span></h3>
@@ -95,6 +130,7 @@
         <h2 id="game-reset">Play Again?</h2>
   </section>
 
+  <!-- Controls section - contains the on-screen controls for the game -->
   <section id="controls-section" class="game-screen" hidden>
     <p id="game-control-up" class="control-top"><i class="fas fa-arrow-circle-up"></i></p>
     <p id="game-control-left" class="control-bottom"><i class="fas fa-arrow-circle-left"></i></p>
@@ -102,9 +138,11 @@
     <p id="game-control-right" class="control-bottom"><i class="fas fa-arrow-circle-right"></i></p>
   </section>
 
+  <!-- Site footer - contains the scrolling tips section -->
   <footer>
     <p id="tips" data-tipindex=-1></p>
   </footer>
+
   <!-- Font Awesome script, page management script & game script. -->
   <script src="https://kit.fontawesome.com/c77bea48db.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
