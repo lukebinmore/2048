@@ -147,14 +147,38 @@ The main aim of this project was to create a simple, and entertaining game that 
 ## Technologies Used
 
 ### Languages
+* HTML
+* CSS
+* JavaScript
 
 ### Stylings/Theme
+* [Google Fonts](https://fonts.google.com/)
+  * Font's used for site:
+    * Pacific
+    * Bubbles
+* [Font Awesome](https://fontawesome.com/)
+  * Icon's used across the site:
+    * Up Arrow
+    * Left Arrow
+    * Right Arrow
+    * Down Arrow
+    * Information Symbol
+    * History Symbol
+    * Close Symbol
 
 ### Project Management
+* [GitHub](https://github.com/)
+  * Used for version control, hosting and deployment
+* [Visual Studio Code](https://code.visualstudio.com/)
+  * IDE used for development of site
 
 ### Learning/Information Resources
-
-
+* [W3Schools](https://www.w3schools.com/)
+  * Used for discovering specific element properties
+* [Stack Overflow](https://stackoverflow.com/)
+  * Used for discovering specific element properties
+* [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+  * User for discovering JavaScript specific functions, features and properties
 
 ## Testing
 
