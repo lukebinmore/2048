@@ -10,7 +10,13 @@ The main aim of this project was to create a simple, and entertaining game that 
 
 ![AmIResponsive-02](media/2048-amiresponsive-02.png)
 
-## Table Of Contents
+
+
+## User Goals
+
+### General User Goals
+
+### Existing User Goals
 
 
 
