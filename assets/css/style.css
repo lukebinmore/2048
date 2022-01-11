@@ -78,7 +78,7 @@ header h1 {
 }
 
 #input-localstorage {
-  transform: scale(200%);
+  transform: scale(2);
   cursor: pointer;
 }
 
