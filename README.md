@@ -37,12 +37,14 @@ The main aim of this project was to create a simple, and entertaining game that 
       - [Logo](#logo)
 
 ## User Goals
-
 ### General User Goals
-
+* User is able to interact with the game in multiple ways.
+* User is able to access the game from any web browser.
+* User is able to play the game on any screen size.
 ### Existing User Goals
-
-
+* User is able to save their username.
+* User is able to see past game scores.
+* User is able to see a brief overview of their game results.
 
 ## Features
 
