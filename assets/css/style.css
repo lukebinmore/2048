@@ -29,11 +29,13 @@ header {
   color: #fff;
 }
 
+/* Header section - images */
 header img {
   display: inline-block;
   height: inherit;
 }
 
+/* Header section - site title */
 header h1 {
   display: inline-block;
   margin: 0 10vw;
@@ -47,6 +49,7 @@ header h1 {
   margin-bottom: 5vh;
 }
 
+/* Splash screen section - heading */
 #splash-screen h2 {
   font-weight: 100;
   font-size: 5vh;
@@ -54,16 +57,19 @@ header h1 {
   padding: 0.25em;
 }
 
+/* Splash screen section - input labels */
 .splash-screen-label {
   display: block;
   font-size: 3vh;
   margin: 1vh;
 }
 
+/* Splash screen section - error label */
 #splash-screen-error {
   color: #c00;
 }
 
+/* Splash screen section - username input */
 #input-username {
   display: block;
   font-size: 3vh;
@@ -77,11 +83,13 @@ header h1 {
   border-radius: 0.5em;
 }
 
+/* Splash screen section - localStorage input */
 #input-localstorage {
   transform: scale(2);
   cursor: pointer;
 }
 
+/* Splash screen section - play button */
 #splash-screen-play {
   width: fit-content;
   font-size: 4vh;
@@ -103,6 +111,7 @@ header h1 {
   border-color: #fff;
 }
 
+/* Splash screen section - reset button */
 #splash-screen-reset {
   font-size: 2vh;
   border: 0.25em solid #000;
@@ -129,6 +138,7 @@ header h1 {
   columns: 2;
 }
 
+/* Menu button section - menu button text */
 #menu-button-section h2 {
   font-size: 3vh;
   border: 0.25em solid #000;
@@ -146,11 +156,6 @@ header h1 {
 
 #menu-button-section h2:active {
   border-color: #fff;
-}
-
-#close-page-button {
-  position: absolute;
-  padding: 0 10px;
 }
 
 /* Game score section */
@@ -171,14 +176,18 @@ header h1 {
   overflow: hidden;
 }
 
+/* Game section - close page button */
 #close-page-button {
   color: #fff;
+  position: absolute;
+  padding: 0 10px;
 }
 
 #close-page-button:hover {
   color: #5f5f5f;
 }
 
+/* Game section - pages */
 .game-section-pages {
   width: 100%;
   height: 100%;
@@ -189,12 +198,14 @@ header h1 {
   font-family: Bubbles;
 }
 
+/* Game section - pages - headings */
 .game-section-pages h3 {
   border-top: 0.25em solid #fff;
   padding-top: 1vmin;
   margin-top: 1vmin;
 }
 
+/* Game section - score history page - scores */
 #score-history-all div {
   border: 0.05em solid #fff;
   border-radius: 0.5em;
@@ -202,12 +213,14 @@ header h1 {
   padding: 0.1em;
 }
 
+/* Game section - game page */
 #game-page {
   width: 100%;
   height: 100%;
   overflow-y: auto;
 }
 
+/* Game section - game page - game grid */
 #game-grid {
   width: 100%;
   height: 100%;
@@ -215,6 +228,7 @@ header h1 {
   flex-wrap: wrap;
 }
 
+/* Game section - game page - game grid - tile numbers */
 #game-grid h2 {
   border: 0.15em solid #000;
   border-radius: 0.5em;
@@ -222,6 +236,7 @@ header h1 {
   line-height: 250%;
 }
 
+/* Game section - game results page */
 #game-results {
   display: none;
   width: 100%;
@@ -232,16 +247,19 @@ header h1 {
   box-sizing: border-box;
 }
 
+/* Game section - game results page - headings */
 #game-results h3 {
   box-sizing: border-box;
   border-bottom: 0.15em solid #fff;
 }
 
+/* Game section - game results page - game outcome heading */
 #results-outcome {
   box-sizing: border-box;
   border-bottom: 0.15em solid #fff;
 }
 
+/* Game section - game results page - game restart button */
 #game-reset {
   width: fit-content;
   margin: 1.5vh auto;
@@ -269,6 +287,7 @@ header h1 {
   width: 100%;
 }
 
+/* Game controls section - bottom row buttons */
 .control-bottom {
   display: inline-block;
 }
@@ -286,6 +305,7 @@ footer {
   overflow: hidden;
 }
 
+/* Footer - scrolling tips */
 #tips {
   padding: 0 1vw;
   font-size: 2vh;
@@ -293,11 +313,13 @@ footer {
   font-family: Bubbles;
 }
 
+/* Footer - scrolling tips animation */
 .tips-animation {
   transform: translateX(100%);
   animation: tipanimation 10 linear;
 }
 
+/* Footer - scrolling tips keyframes */
 @keyframes tipanimation {
   from {
     transform: translateX(100vw);
@@ -310,10 +332,12 @@ footer {
 
 /* Media queries */
 @media screen and (max-width:500px) {
+  /* Header section - site title */
   header h1 {
     margin: 0 3vw;
   }
 
+  /* Menu button section - menu button text */
   #menu-button-section h2 {
     font-size: 2vh;
   }
