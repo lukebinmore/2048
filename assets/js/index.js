@@ -824,7 +824,6 @@ function updateTileColor() {
     tilesList[i].style.backgroundColor = gameColors[colorIndex];
 
     // Set color of text based on value
-    Check if tile is empty, and set 
     if (tilesList[i].innerHTML == 0) {
       tilesList[i].style.color = gameColors[colorIndex];
     } else {
