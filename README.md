@@ -10,7 +10,31 @@ The main aim of this project was to create a simple, and entertaining game that 
 
 ![AmIResponsive-02](media/2048-amiresponsive-02.png)
 
-
+## Table Of Contents
+- [2048 - Live Site](#2048---live-site)
+  - [Table Of Contents](#table-of-contents)
+  - [User Goals](#user-goals)
+    - [General User Goals](#general-user-goals)
+    - [Existing User Goals](#existing-user-goals)
+  - [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Future Features](#future-features)
+  - [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+    - [Stylings/Theme](#stylingstheme)
+    - [Project Management](#project-management)
+    - [Learning/Information Resources](#learninginformation-resources)
+  - [Testing](#testing)
+    - [Automated Testing](#automated-testing)
+      - [Chrome DevTools - Lighthouse Report](#chrome-devtools---lighthouse-report)
+      - [Validator Testing](#validator-testing)
+    - [Manual Testing](#manual-testing)
+    - [Unfixed Bugs](#unfixed-bugs)
+  - [Deployment](#deployment)
+  - [Credits](#credits)
+    - [Information Sources/Resources](#information-sourcesresources)
+    - [Content](#content)
+      - [Logo](#logo)
 
 ## User Goals
 
