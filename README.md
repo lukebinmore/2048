@@ -165,6 +165,9 @@ The main aim of this project was to create a simple, and entertaining game that 
     * Information Symbol
     * History Symbol
     * Close Symbol
+* [Icon Archive](https://iconarchive.com/show/flatwoken-icons-by-alecive/Apps-2048-icon.html)
+  * Icons used for this site:
+    * 2048 Favicon
 
 ### Project Management
 * [GitHub](https://github.com/)
