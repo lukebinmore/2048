@@ -728,7 +728,7 @@ function gameOverCheck() {
  */
 function gameInputHorizontal(direction) {
   // Check if game page is open
-  if (!gamePage.hidden) {
+  if (!gamePage.hidden && !gameSection.hidden) {
     // Start game timer
     gameTimer("start");
 
@@ -755,7 +755,7 @@ function gameInputHorizontal(direction) {
  */
 function gameInputVertical(direction) {
   // Check if game page is open
-  if (!gamePage.hidden) {
+  if (!gamePage.hidden && !gameSection.hidden) {
     // Start game timer
     gameTimer("start");
 
