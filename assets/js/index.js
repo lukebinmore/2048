@@ -724,9 +724,9 @@ function convertSecondsToTime(seconds) {
   let mm = Math.floor((seconds - (hh * 3600)) / 60);
   let ss = Math.floor((seconds - (hh * 3600) - (mm * 60)));
 
-  if (hh < 10) { hh = "0" + hh }
-  if (mm < 10) { mm = "0" + mm }
-  if (ss < 10) { ss = "0" + ss }
+  if (hh < 10) { hh = "0" + hh; }
+  if (mm < 10) { mm = "0" + mm; }
+  if (ss < 10) { ss = "0" + ss; }
 
   let time = [hh, mm, ss].join(':');
 
@@ -813,7 +813,7 @@ function getScoreHistory() {
     }
   }
 
-  keyNums.sort(function (a, b) { return a - b });
+  keyNums.sort(function (a, b) { return a - b; });
 
   for (let key of keyNums) {
     gameScoreHistory["game-" + key] = unorderedScores["game-" + key];
