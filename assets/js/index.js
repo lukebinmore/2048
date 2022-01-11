@@ -54,7 +54,7 @@ function clickInput(e) {
       openInstructions();
       break;
     case historyButton:
-      openHistory()
+      openHistory();
       break;
     case closePageButton:
       closePage();
@@ -87,7 +87,7 @@ function clickInput(e) {
       openInstructions();
       break;
     case historyButton:
-      openHistory()
+      openHistory();
       break;
     case closePageButton:
       closePage();
@@ -635,7 +635,7 @@ function gameInputHorizontal(direction) {
   if (!gamePage.hidden) {
     gameTimer("start");
     if (gameShiftHorizontalCheck(direction)) {
-      gameShiftHorizontal(direction)
+      gameShiftHorizontal(direction);
       gameCombineHorrizontal(direction);
       gameShiftHorizontal(direction);
       createTile();
@@ -655,7 +655,7 @@ function gameInputVertical(direction) {
   if (!gamePage.hidden) {
     gameTimer("start");
     if (gameShiftVerticalCheck(direction)) {
-      gameShiftVertical(direction)
+      gameShiftVertical(direction);
       gameCombineVertical(direction);
       gameShiftVertical(direction);
       createTile();
@@ -724,9 +724,9 @@ function convertSecondsToTime(seconds) {
   let mm = Math.floor((seconds - (hh * 3600)) / 60);
   let ss = Math.floor((seconds - (hh * 3600) - (mm * 60)));
 
-  if (hh < 10) { hh = "0" + hh };
-  if (mm < 10) { mm = "0" + mm };
-  if (ss < 10) { ss = "0" + ss };
+  if (hh < 10) { hh = "0" + hh }
+  if (mm < 10) { mm = "0" + mm }
+  if (ss < 10) { ss = "0" + ss }
 
   let time = [hh, mm, ss].join(':');
 
@@ -859,9 +859,6 @@ function getFastestTime() {
  * Runs process for updating History page. Including running all functions to pull specific scores from history, and display them.
  */
 function updateHistoryPage() {
-  let newestScore = null;
-  let bestScore = "game-1";
-
   getScoreHistory();
 
   displayNewestScore();
@@ -939,13 +936,15 @@ function displayBestScore() {
   scoreHistoryBest.innerHTML = "";
 
   for (let key in gameScoreHistory) {
-    if (gameScoreHistory[key].score > gameScoreHistory[best].score) {
-      best = key;
-    }
-
-    if (gameScoreHistory[key].score >= gameScoreHistory[best].score) {
-      if (gameScoreHistory[key].time <= gameScoreHistory[best].time) {
+    if (gameScoreHistory.hasOwnProperty(key)) {
+      if (gameScoreHistory[key].score > gameScoreHistory[best].score) {
         best = key;
+      }
+
+      if (gameScoreHistory[key].score >= gameScoreHistory[best].score) {
+        if (gameScoreHistory[key].time <= gameScoreHistory[best].time) {
+          best = key;
+        }
       }
     }
   }
@@ -964,8 +963,10 @@ function displayGoogleChart() {
 
   getScoreHistory();
 
-  for (let index in gameScoreHistory) {
-    chartData.push([index.replace("game-", ""), gameScoreHistory[index].score]);
+  for (let key in gameScoreHistory) {
+    if (gameScoreHistory.hasOwnProperty(key)) {
+      chartData.push([key.replace("game-", ""), gameScoreHistory[key].score]);
+    }
   }
 
   if (chartData.length > 11) {
@@ -995,7 +996,7 @@ function displayGoogleChart() {
           color: '#fff'
         }
       }
-    }
+    };
     var chart = new google.visualization.LineChart(document.getElementById('score-history-chart'));
     chart.draw(data, options);
   }
@@ -1009,10 +1010,12 @@ function displayAllScores() {
   scoreHistoryAll.innerHTML = "";
 
   for (let key in gameScoreHistory) {
-    let nextScore = document.createElement("div");
+    if (gameScoreHistory.hasOwnProperty(key)) {
+      let nextScore = document.createElement("div");
 
-    nextScore.innerHTML = getScoreHTML(key)
-    scoreHistoryAll.prepend(nextScore);
+      nextScore.innerHTML = getScoreHTML(key);
+      scoreHistoryAll.prepend(nextScore);
+    }
   }
 }
 //#endregion
@@ -1056,7 +1059,7 @@ function updateTipWidth(tipIndex) {
   let canvas = updateTipWidth.canvas || (updateTipWidth.canvas = document.createElement("canvas"));
   let context = canvas.getContext("2d");
   let fontSize = window.getComputedStyle(tipElement, null).getPropertyValue("font-size");
-  let fontFamily = window.getComputedStyle(tipElement, null).getPropertyValue("font-family")
+  let fontFamily = window.getComputedStyle(tipElement, null).getPropertyValue("font-family");
   context.font = fontSize + " " + fontFamily;
 
   tipElement.style.width = context.measureText(tips[tipIndex]).width + "px";
@@ -1159,7 +1162,7 @@ const gameColors = [
   "hsl(310, 100%, 60%)",
   "hsl(330, 100%, 60%)",
   "hsl(350, 100%, 60%)"
-]
+];
 
 // Game Screen - Game Results
 const gameResults = document.getElementById("game-results");
