@@ -228,6 +228,128 @@ All HTML, CSS and JavaScript pages passed validators with no errors.
 
 ### Manual Testing
 
+**Summary:**
+
+During the development of this site, and upon completion, a range of different manual tests were carried out to confirm no bugs or issues remained. These tests were carried out on a range of different simulated and physical devices, on a range of different browsers.
+All tests carried out: **PASSED**
+
+<details>
+<summary>Devices Tested</summary>
+
+Simulated devices tested using [Chrome DevTools](https://developer.chrome.com/docs/devtools/)
+
+* Physical Devices
+  * Desktop PC (Windows 10)
+  * Macbook Pro (OSX)
+  * Samsung Galaxy S10+ (Android)
+  * iPhone 11 (IOS)
+  * Kindle Fire Tablet (FireOS)
+* Simulated Devices
+  * Moto G4
+  * Nexus 10
+  * Pixel 2
+  * Pixel 2 XL
+  * iPhone 5/SE
+  * iPhone 6/7/8
+  * iPhone 6/7/8 Plus
+  * iPhone X
+  * iPad
+  * iPad Pro
+  * Surface Duo
+  * Nest Hub
+  * Nest Hub Max
+</details>
+
+<details>
+<summary>Browsers Tested</summary>
+
+* Chrome
+* Edge
+* Firefox
+* Opera
+* Safari
+* Silk Browser
+</details>
+
+<details>
+<summary>View Tests</summary>
+
+<details>
+<summary>Functional Tests</summary>
+
+* Username Input
+  * Check if existing username is pre-filled.
+  * Check if user can enter text.
+* Local Storage Confirmation
+  * Check if existing state is pre-filled.
+  * Check if user input is accepted.
+* Error Message Dispaly
+  * Check if error message is displayed.
+  * Check if correct error message is displayed.
+* Play Now Button
+  * Check if game screen is loaded.
+  * Check if user input is correctly validated.
+  * Check if keyboard input is accepted.
+* Reset Button
+  * Check if inputs are cleared.
+  * Check if localStorage has been cleared.
+* Instructions Button
+  * Check if instructions page is opened.
+  * Check if close button is displayed.
+* Score History Button
+  * Check if score history page is opened.
+  * Check if close button is displayed.
+* Score History Page
+  * Check if newest score is displayed.
+  * Check if best score is displayed.
+  * Check if Google Chart is loaded correctly.
+  * Check if all scores are displayed in the correct order.
+* Current Score
+  * Check if current score is updated with current top score.
+* 2048 Game
+  * Check if game is loaded correctly.
+  * Check if tiles are loaded correctly.
+  * Check if all game inputs are accepted.
+  * Check if game results are displayed on game end.
+* Game results
+  * Check if correct winner or loser status is displayed.
+  * Check if correct information is loaded from history.
+* Play Again Button
+  * Check if play again button restarts game.
+  * Check if keyboard input is accepted to restart game.
+  * Check if current score is correctly reset.
+* On-Screen Controls
+  * Check if clicking inputs complete corresponding game movements.
+* Tips
+  * Check if tips scroll from right to left.
+  * Check if tips scroll at correct speed.
+  * Check if tips change to the next tip correctly.
+
+</details>
+<details>
+<summary>View Responsiveness Tests</summary>
+
+* Site Header
+  * Check if header stays the same size reletive to the screen height.
+  * Check if the content is centered on the page.
+  * Check if header shrinks on smaller screens.
+* Site Logos
+  * Check if logos have the correct spacing in the header.
+  * Check if the logos resize to fit the header.
+* Welcome Heading
+  * Check if heading sizes properly to fit window.
+* Instructions/Score History Buttons
+  * Check if buttons shrink on smaller screens.
+* 2048 Game
+  * Check if game sizes correctly based on screen size.
+* On-Screen Controls
+  * Check if controls are sized correctly based on screen size.
+* Tips
+  * Check if tips speed is adjusted based on window width.
+
+</details>
+</details>
+
 ### Unfixed Bugs
 
 
