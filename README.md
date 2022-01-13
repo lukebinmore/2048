@@ -32,7 +32,6 @@ The main aim of this project was to create a simple, and entertaining game that 
   - [Credits](#credits)
     - [Information Sources/Resources](#information-sourcesresources)
     - [Content](#content)
-      - [Logo](#logo)
 
 ## User Goals
 ### General User Goals
@@ -372,6 +371,16 @@ This site was deployed by completing the following steps:
 
 ### Information Sources/Resources
 
+* [W3Schools](https://www.w3schools.com/)
+  * Used for discovering specific element properties
+* [Stack Overflow](https://stackoverflow.com/)
+  * Used for discovering specific element properties
+* [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web)
+  * User for discovering JavaScript specific functions, features and properties
+
 ### Content
 
-#### Logo
+* [PNGWing](https://www.pngwing.com/en/free-png-znezn/download?height=150)
+  * Provided game and site logo
+* [Icon Archive](https://iconarchive.com/show/flatwoken-icons-by-alecive/Apps-2048-icon.html)
+  * Provided site favicon
