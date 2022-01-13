@@ -210,6 +210,22 @@ The main aim of this project was to create a simple, and entertaining game that 
 
 #### Validator Testing
 
+**Summary:**
+
+All HTML, CSS and JavaScript pages passed validators with no errors.
+
+* HTML
+  * index.html returned no errors.
+  * index.html returned one warning - Section lacks heading - Controls-Section
+  * [W3C Validator Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Flukebinmore.github.io%2F2048%2F)
+* CSS
+  * style.css returned no errors.
+  * style.css returned no warnings.
+  * [W3C Validator Results](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Flukebinmore.github.io%2F2048%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+* JavaScript
+  * index.js returned no errors.
+  * index.js returned four warnings, all for google charts.
+
 ### Manual Testing
 
 ### Unfixed Bugs
