@@ -197,7 +197,7 @@ The main aim of this project was to create a simple, and entertaining game that 
   * The index page has a best practice score of 100.
   * The index page has an SEO score of 100.
 
-![Chrome Devtools - Lighthouse Desktop Mode](media/2048-chrome-devtools-desktop.png)
+![Chrome Devtools - Lighthouse Desktop Mode](media/2048-devtools-desktop.png)
 
 * Mobile:
   * The index page has a performance score of 98.
@@ -206,7 +206,7 @@ The main aim of this project was to create a simple, and entertaining game that 
     * Improved by obtaining higher resolution logo image.
   * The index page has an SEO score of 100.
 
-![Chrome Devtools - Lighthouse Desktop Mode](media/2048-chrome-devtools-mobile.png)
+![Chrome Devtools - Lighthouse Desktop Mode](media/2048-devtools-mobile.png)
 
 #### Validator Testing
 
