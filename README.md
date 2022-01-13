@@ -303,16 +303,27 @@ Simulated devices tested using [Chrome DevTools](https://developer.chrome.com/do
   * Check if best score is displayed.
   * Check if Google Chart is loaded correctly.
   * Check if all scores are displayed in the correct order.
+  * Check if all scores are formatted correctly.
+* Close Page Button
+  * Check if close page button closes instructions page.
+  * Check if close page button closes score history page.
 * Current Score
   * Check if current score is updated with current top score.
 * 2048 Game
   * Check if game is loaded correctly.
   * Check if tiles are loaded correctly.
   * Check if all game inputs are accepted.
+  * Check if game movements are succssefully carried out.
+  * Check if tiles combine properly.
+  * Check if tiles change color correctly.
+  * Check if game ends on no more possible moves.
+  * Check if game ends on game winning score reached.
   * Check if game results are displayed on game end.
 * Game results
   * Check if correct winner or loser status is displayed.
   * Check if correct information is loaded from history.
+  * Check if information loaded from history is formatted correctly.
+  * Check if new game details are added to localStorage.
 * Play Again Button
   * Check if play again button restarts game.
   * Check if keyboard input is accepted to restart game.
