@@ -356,7 +356,17 @@ Simulated devices tested using [Chrome DevTools](https://developer.chrome.com/do
 
 ## Deployment
 
+The development of this site has been done so in the "main" branch. This branch has been deployed using GitHub Pages, with the live site being the most recent commit in this branch.
 
+This site was deployed by completing the following steps:
+
+1. Opened [GitHub](https://github.com/) and opened the "2048" repository.
+2. Navigated to the "Settings" page of the repository.
+3. Navigated to the "Pages" page of the repository.
+4. Selected the "main" branch and selected "Save" to save as the deployed branch.
+5. The link to the live deployed site was then presented.
+
+[Live Site](https://lukebinmore.github.io/2048/)
 
 ## Credits
 
